@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<root>
+ <NameKey>MapDescription/CM01_15_OldKingsCastle_name</NameKey>
+ <DescKey>MapDescription/CM01_15_OldKingsCastle_desc</DescKey>
+ <Name>Die dunklen Pyramiden</Name>
+ <Desc>In einer düsteren aber faszinierenden Umwelt müsst ihr bestehen und Euch gegen drei mächtige Gegner zur Wehr setzten. Ihr habt Euch früh zu verteidigen,  behaltet dabei aber auch Eure Rohstoffversorgung im Blick. Kampf, Aufbau und Forschung werden Euch über weite Strecken des Spiels fesseln. Nutzt Diebe und die Beeinflussung des Wetters, bis ihr im finalen Kampf endlich die beiden Pyramiden stürmen und die drei dunklen Festungen erobern könnt.</Desc>
+ <SizeX>0</SizeX>
+ <SizeY>0</SizeY>
+ <MPFlag>false</MPFlag>
+ <MPPlayerCount>0</MPPlayerCount>
+ <MPGameOptionFlagSet>0</MPGameOptionFlagSet>
+ <MiniMapTextureName>data\graphics\Textures\GUI\MapPics\externalmap</MiniMapTextureName>
+ <Key>2</Key>
+ <GUID>
+  <Data>03d58a97-79f3-4b46-bc39-814fc4b205c8</Data>
+ </GUID>
+</root>

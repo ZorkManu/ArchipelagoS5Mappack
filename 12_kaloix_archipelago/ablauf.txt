@@ -1,0 +1,16 @@
+NPC Harbour -> Text: Hier liegt ein alter Hafen, dort kann man ein VC bauen. Wird verteidigt von Barbaren
+ Hafen aufdecken.
+Player ID7 (army_DefenseLeftMines) Barbaren Rot Unten
+
+Player ID2 (KI2)
+[x] Zerstört (Rot,oben links) -> Text "Die Minen sind sicher" Vonni ?
+
+Player ID3 Morfichet (gelb)aufdecken Text: Vonni ? (mdme Morfichet)
+NPCs reinstellen ?
+
+Wenn Bau Tribut bezahlt (Player ID4) Text: "Danke, wir sagen Mdme Morfichet bescheid wenn wir fertich sind! Verteidige uns weiter !"
+
+
+
+Player ID6 (KI1)
+

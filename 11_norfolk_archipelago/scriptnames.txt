@@ -1,0 +1,56 @@
+HQ - set hitpoints to 50%
+
+Messanger - must be protected
+Attacker 1-3 - spawn pikeman in way
+Waypoint 1-4 - army waypoints
+MayorNPC - talk to player after helped messanger
+
+IronNPC - inform player about iron mines
+TowerIronCheck  1-2 - check for towers 2 or 3 (2000)
+
+
+SulfurTowerCheck - check for towers 2 or 3 (6400)
+
+Monk - subquest, potion for monk open secret way
+rock 1-2 - remove after helped monk
+Ingredient - one part of the potion
+Waterfall - also one part of the potion
+
+Pl2Path - blocked way to leo, need pilgrim
+Leonardo - 2nd quest target...inform about sulfur and plan
+AriBack - Ari spawn after cutscene
+LeoBack - Leo spawn after cutscene
+KerberosSea - show water between norfolk and kerberos
+BarbarienSea - show water between norfolk and barbariens
+P4DefensePos - barbariens base
+P2Defense2	- kerberos base
+
+player 2:
+cannons
+swork
+pike
+
+SulfurTowerCheck - build mines outpost near this place...defend with army (5000)
+
+P2Defense 1-2 - defend (5000) , 4000
+
+pos 1-3 - attack posiitons in winter *additional armies* (3000)
+
+P2Defense 2 - attack pos (4000)
+
+player 3:
+bows lvl 4
+
+Concentrating_Area	- defend area 7000
+Concentrating_Area2 - defend area 3000
+
+SulfurTowerCheck - use for build up...2 mines
+
+player 4:
+barbariens
+
+P4AttackPos - start attacking from this position (3000) *increase army size in winter*
+P4DefensePos - defend (6000)
+
+TowerIronCheck2 - build mine
+P4BuildIronMines - build mine here too

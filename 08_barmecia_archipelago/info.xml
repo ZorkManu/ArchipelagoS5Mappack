@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<root>
+ <NameKey>MapDescription/CM01_08_Barmecia_name</NameKey>
+ <DescKey>MapDescription/CM01_08_Barmecia_desc</DescKey>
+ <Name></Name>
+ <Desc></Desc>
+ <SizeX>100</SizeX>
+ <SizeY>100</SizeY>
+ <MPFlag>false</MPFlag>
+ <MPPlayerCount>0</MPPlayerCount>
+ <MPGameOptionFlagSet>0</MPGameOptionFlagSet>
+ <MiniMapTextureName>data\graphics\Textures\GUI\MapPics\externalmap</MiniMapTextureName>
+ <Key>2</Key>
+ <GUID>
+  <Data>5367e604-c0ed-4b3b-84db-a1cc6d53f218</Data>
+ </GUID>
+</root>

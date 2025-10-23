@@ -1,0 +1,19 @@
+2nd cutscene removed!
+
+
+* renamed Entities
+
+destroyedVillage
+
+* new script Entities
+
+defender1
+defender2
+defender3
+defender4
+
+* new Entities
+
+banditLeader
+
+HumanCastle

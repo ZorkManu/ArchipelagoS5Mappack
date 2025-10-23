@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<root>
+ <NameKey>MapDescription/CM01_12_Kaloix_name</NameKey>
+ <DescKey>MapDescription/CM01_12_Kaloix_desc</DescKey>
+ <Name></Name>
+ <Desc></Desc>
+ <SizeX>0</SizeX>
+ <SizeY>0</SizeY>
+ <MPFlag>false</MPFlag>
+ <MPPlayerCount>0</MPPlayerCount>
+ <MPGameOptionFlagSet>0</MPGameOptionFlagSet>
+ <MiniMapTextureName>data\graphics\Textures\GUI\MapPics\externalmap</MiniMapTextureName>
+ <Key>2</Key>
+ <GUID>
+  <Data>0b795104-08d2-43d8-a0a8-3bfac68d2c2d</Data>
+ </GUID>
+</root>

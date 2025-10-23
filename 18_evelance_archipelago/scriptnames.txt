@@ -1,0 +1,39 @@
+DespairHQ - orb...done
+DespairSpawn - spawn position of defense units (2500)...done
+
+Prison - for princess...done
+leonardo...done
+
+TendrelSerf - prelude serf...near start pos...done
+
+Major...done
+MajorPatrol 1-2...done
+
+TendrelOffensePos - offensive defense (21000)...done
+
+CathedralPos...done
+
+Entrace - to despair...done
+BlockingStone (1-3 on franks map)...done
+
+P5_AttackPos...done
+
+LeosSulfurPits 1&2 4000...done
+
+done:
+
+OP1_tower 1-4
+OP2_tower 1-4
+OP3_tower 1-2
+
+KerberosDefenseOP - spawning defense units...done
+KerberosDefenseSpawnPos - here  (14000)...done
+
+Kerberos - ignored by ai...should be placed behind walls or removed from map...done
+
+LeoGate...there
+
+army 4 - 7
+
+P5DefenseGenerator 1-4 - spawn generators
+P5DefenseSpawnPos 1-4 - spawn positions 2000

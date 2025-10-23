@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<root>
+ <NameKey>MapDescription/CM01_06_Cleycourt_name</NameKey>
+ <DescKey>MapDescription/CM01_06_Cleycourt_desc</DescKey>
+ <Name></Name>
+ <Desc></Desc>
+ <SizeX>100</SizeX>
+ <SizeY>100</SizeY>
+ <MPFlag>false</MPFlag>
+ <MPPlayerCount>0</MPPlayerCount>
+ <MPGameOptionFlagSet>0</MPGameOptionFlagSet>
+ <MiniMapTextureName>data\graphics\Textures\GUI\MapPics\externalmap</MiniMapTextureName>
+ <Key>2</Key>
+ <GUID>
+  <Data>dd68da27-60b6-4881-893e-0ae2d26bba5e</Data>
+ </GUID>
+</root>

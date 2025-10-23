@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<root>
+ <NameKey>MapDescription/CM01_17_CloudyMountains_name</NameKey>
+ <DescKey>MapDescription/CM01_17_CloudyMountains_desc</DescKey>
+ <Name></Name>
+ <Desc></Desc>
+ <SizeX>0</SizeX>
+ <SizeY>0</SizeY>
+ <MPFlag>false</MPFlag>
+ <MPPlayerCount>0</MPPlayerCount>
+ <MPGameOptionFlagSet>0</MPGameOptionFlagSet>
+ <MiniMapTextureName>data\graphics\Textures\GUI\MapPics\externalmap</MiniMapTextureName>
+ <Key>2</Key>
+ <GUID>
+  <Data>6e413f1b-1efc-4638-83f2-36322a581119</Data>
+ </GUID>
+</root>

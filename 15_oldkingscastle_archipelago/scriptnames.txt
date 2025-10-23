@@ -1,0 +1,119 @@
+Garek - give hq if talked to
+HQ - own hq
+Tower 1-3 - give on hq found
+
+OccupyingPos - spawn occupying army here (6000)
+Gift 1-12 - give after army destroyed
+
+
+RockNorth2 - open on winter
+
+RockNorth - open on not winter
+RockSouth - remove after tribute paid
+
+Exit - leave map at end
+
+BergstadtNPC - talk to get subquest, tribute quest for ally, open south exit
+
+
+
+
+
+Player2:
+soldiers - lvl 2
+bows - lvl 2
+cannons - lvl 2
+
+strength - each 4
+AI1_ConcentratingArea1 - defense 1 (6000)
+AI1_ConcentratingArea2 - defense 2 (7000)
+P2HQDefensePos - defense 3 (2000)
+
+strength - 4
+AI1_Attack_DownTown 1-4 - main attack positions, start attack after 10 minutes
+
+
+strength - 4
+IronBuildingCheck1 - check in 2000
+IronBuildingCheck2 - for player 1 buildings
+AI1_Attack_Iron - 2nd attack start pos
+
+
+strenght - 1
+bows - lvl 2
+Intruders 1-5 - check in 2000  (4) will spawn 4 units
+
+Player5:
+soldiers - lvl 2
+bows - lvl 2
+cannons - lvl 2
+
+strength - 8
+P5DefensePos - inner defense (7000, 4500)
+
+strength - 6
+AI2_ConcentratingArea - attacking army inner defense (6000, 10000)
+P5AttackPos - start attack from this position...after snow stopped
+
+Player6:
+strength - 6
+cavalery - lvl2
+bows - lvl4
+
+P6AttackPos - start attacking P5 from this position, after tribute paid
+P6Defense - ralley point
+
+Player 3:
+Robbers
+
+strength - 4
+Robbers 1-5 - spawn pos, 2000
+RobberTower 1-5 - spawn generator
+
+
+
+
+
+Briefing bergstadtattack:
+BergstadtPathPos - show removed stone
+P6Stable - show producing army
+P6Archery - show producing army
+
+Briefing garek:
+only if mission free VC not done
+	Gift3 - show army
+	Gift7 - show VC
+else
+	say bravo, you have already freed your village
+	
+Briefing neutralkerberod:
+KerberosSpawnPos - spawn kerberos here
+Exit - show Exit
+
+Briefing kerberos:
+Garek - be aware of kreberos attacks
+P5AttackPos - show coming attacks
+AI2_ConcentratingArea - show marker in the dark
+
+Briefing prelude:
+HQ - move target
+BergstadtNPC - move target without explore and scroll
+
+Briefing bergstadt:
+BergstadtNPC - tribute
+
+
+
+Changes:
+
+Intruders4 - strong enemies
+StartWinterGate - begin winter if passing this gate
+
+AriFriends1 - first leader joining player
+AriFriends2 - more ari thiefs joining player
+
+FrozenWater - show in sommer briefing
+CornField - show in sommer briefing
+
+Gate1		- closed gate for ari
+GateKey1	- key to open gate

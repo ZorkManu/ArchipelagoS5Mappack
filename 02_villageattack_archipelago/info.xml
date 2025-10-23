@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<root>
+ <NameKey>MapDescription/CM01_02_VillageAttack_name</NameKey>
+ <DescKey>MapDescription/CM01_02_VillageAttack_desc</DescKey>
+ <Name></Name>
+ <Desc></Desc>
+ <SizeX>100</SizeX>
+ <SizeY>100</SizeY>
+ <MPFlag>false</MPFlag>
+ <MPPlayerCount>0</MPPlayerCount>
+ <MPGameOptionFlagSet>0</MPGameOptionFlagSet>
+ <MiniMapTextureName>data\graphics\Textures\GUI\MapPics\externalmap</MiniMapTextureName>
+ <Key>2</Key>
+ <GUID>
+  <Data>6c3e15ef-d5a6-48f2-88fc-100315b23583</Data>
+ </GUID>
+</root>

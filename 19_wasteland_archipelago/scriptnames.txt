@@ -1,0 +1,70 @@
+PreludeQuestPos - start prelude if hero near this position (3000)
+NPC_Prelude
+start_1 - prelude signal pos
+
+preludeLeftMarker - marker for left search...clear on swamp village freed
+preludeRightMarker - marker for right search...clear on rescue or build up done
+
+Banned_Info_NPC - Tell player about village
+
+VillageTarget 1-9 - for Destroy and Rescue Task
+VillagersRescuePos - Rescue position (760)
+RescueObject 1-7 - gift given for rescue
+
+RainVillageMarker - marker for rain village...clear after rain briefing read...show after swamp npc
+RainNPCMove 1-4 - npc is moving around the tree
+RainNPC - npc telling about rain...deactivate on mission done or talked
+DeadTree - replace on rain quest done
+
+SnowNPC - npc thanx for helping them and give player resources...run to hero on winter
+SnowNPCPos - return position
+
+BuildUpNPC - runs to player if others rescued else stand and wait...tell about problem
+BuildUpQuestPos - build up 6 lvl3 residences and 6 lvl3 farms in range of 6400
+
+P1_Leader3 - 4 soldier
+P1_Leader2 - 4 soldier
+P1_Leader1 - 4 soldier
+
+RescueObject 1 - 3 ... 12 soldier
+
+KI1_DefensePos - Left ki center position
+KI1_AttackPos - Left ki attack position -- on winter
+
+KI2_Outpost - Spawning raiding troops -- attack every 10 minutes
+KI2_SpawnPos - Spawn pos
+
+KI3_DefensePos - Right ki defense position
+KI3_HQ			- spawning units
+KI3_SpawnPos - spawn units here
+
+weathermaster - npc subquest
+
+
+1: Spieler
+2: Coastal Plateau Village (BefreiungsQuest)
+3: Swamp Isle Village (SnowQuest)
+4: Mount Dry Village (RainQuest)
+5: Kerberos Forces
+6: Coastal Wasteland Village (AufbauQuest)
+7: Mountain Fortress -> Quest1
+8: WeatherMaster
+
+QuestIDs:
+1: ReachFortress
+2: DryVillage
+3: Rescue Villagers
+4: Snow
+5: Buildup
+6: Search Allies (GesamtQuest)
+
+1st Quest:	reach mountain fortress(expedition)
+2nd Quest:	Free village in the swamp(snow)
+3rd Quest:	Bring life to tree(rain)
+4th Quest:	Rescue villagers(Rescue)
+5th Quest:	Buildup Village(Expansion)
+6th Quest:  SearchAllies(Hauptaufgabe)
+1st Sub Quest:	Weather Master.
+
+
+

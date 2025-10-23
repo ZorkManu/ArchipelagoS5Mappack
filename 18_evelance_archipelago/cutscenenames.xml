@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<root>
+ <Name>AriPilgrim</Name>
+ <Name>Cutscene1</Name>
+ <Name>Cutscene2</Name>
+ <Name>Cutscene3</Name>
+ <Name>Intro</Name>
+ <Name>MissionComplete</Name>
+ <Name>Seer</Name>
+</root>

@@ -1,0 +1,32 @@
+Leonardo - use for map start and later info after destroying stones in the east
+Leo_StandPos - leonardo moves to this position after briefing
+
+Water - water between player and orb
+Orb - building containing orb
+
+Major - stone valleys major
+Gate1 - gate opened after stonevalley subquest done
+GateToVillage - gate position
+Stonevalley_BuildPos - build near this position
+
+
+RockSouth1 - first stone in way to start of map
+
+RockSouth 2-3 - rock blocking the way
+RockEast 1-3 - rock blocking the way
+
+
+HQ - players Headquarter
+
+RobberTower 1-4 - generator
+Robbers 1-4 - spawn and pos 3800, 1500, 3500, 3500
+
+
+HQ_AI2	- generator
+AI2_SpawnPos - spawn
+AI2_ConcentratingArea - defend pos (4200)
+
+AttackPos1 - south attack position
+AttackPos1 - east attack position
+AI1_Defend_Iron - iron defense pos (3000)
+AI1_DefensePos - main defense pos (8000)

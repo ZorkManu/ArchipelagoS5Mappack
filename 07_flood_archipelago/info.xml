@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<root>
+ <NameKey>MapDescription/CM01_07_Flood_name</NameKey>
+ <DescKey>MapDescription/CM01_07_Flood_desc</DescKey>
+ <Name></Name>
+ <Desc></Desc>
+ <SizeX>100</SizeX>
+ <SizeY>100</SizeY>
+ <MPFlag>false</MPFlag>
+ <MPPlayerCount>0</MPPlayerCount>
+ <MPGameOptionFlagSet>0</MPGameOptionFlagSet>
+ <MiniMapTextureName>data\graphics\Textures\GUI\MapPics\externalmap</MiniMapTextureName>
+ <Key>2</Key>
+ <GUID>
+  <Data>1bad5038-2b92-46a9-99cf-56ed38ed29ab</Data>
+ </GUID>
+</root>
