@@ -1,5 +1,4 @@
-EMS/*
-!EMS/tools/
+EMS/**
 !EMS/tools/s5CommunityLib/
 !EMS/tools/s5CommunityLib/**
 EMSconfigs/
