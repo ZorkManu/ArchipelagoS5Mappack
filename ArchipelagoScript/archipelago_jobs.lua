@@ -10,6 +10,9 @@ CURRENTFILENAME = "__archipelago-"
 function archipelago_init()
 	Script.Load("maps\\user\\ArchipelagoScript\\archipelago_unit_tribute.lua")
 	Script.Load("maps\\user\\ArchipelagoScript\\archipelago_quest_locations.lua")
+	Script.Load("maps\\user\\EMS\\tools\\s5CommunityLib\\lib\\MemLib\\MemLib.lua")
+	MemLib.Load("BuildingType")
+	--MemLib.BuildingType.SetAttractionSlots(Entities.PB_Headquarters1, 5)
 	reloadGDBItemsSave()
 	--forbid all techs
 	forbidAllItemTechs()

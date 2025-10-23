@@ -1,3 +1,6 @@
 [submodule "s5CommunityLib"]
 	path = s5CommunityLib
 	url = https://github.com/mcb5637/s5CommunityLib.git
+[submodule "EMS/tools/s5CommunityLib"]
+	path = EMS/tools/s5CommunityLib
+	url = https://github.com/mcb5637/s5CommunityLib.git
