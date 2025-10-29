@@ -161,6 +161,8 @@ end2ndQuest = function()
 start3rdQuest = function()
 	
 	Report("start 3rd quest")
+
+	initConstantAttacker()
 	
 	--	enable sub quest npc
 

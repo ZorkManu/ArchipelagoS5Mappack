@@ -12,7 +12,7 @@ createBriefingPrelude = function()
 		briefingPrelude[page] 					= 	{}
 		briefingPrelude[page].title				= 	String.GenericKey("Erec")
 		briefingPrelude[page].text				=	String.Key("briefingPrelude[1].text")
-		briefingPrelude[page].position			=	GetPosition("Dario")
+		briefingPrelude[page].position			=	GetPosition(getLeadingHero())
 
 	--	page 2
 
@@ -70,7 +70,7 @@ createBriefingPrelude = function()
 		briefingPrelude[page] 					= 	{}
 		briefingPrelude[page].title				= 	String.GenericKey("MissionObjectives")
 		briefingPrelude[page].text				=	String.Key("briefingPrelude[6].text")
-		briefingPrelude[page].position 			= 	GetPosition("Dario")
+		briefingPrelude[page].position 			= 	GetPosition(getLeadingHero())
 
 	--	go!
 	

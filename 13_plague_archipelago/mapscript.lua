@@ -59,6 +59,7 @@
 		IncludeLocals("army_supportA")
 		IncludeLocals("army_supportB")
 		IncludeLocals("army_supportC")
+		IncludeLocals("army_recruiting_village")
 		
 		IncludeLocals("Map_LocalInit")		--TF_Include!
 		IncludeLocals("Cutscene_Control")
@@ -174,6 +175,20 @@ function Mission_FirstMapAction()
 		archipelago_init()
 		HeroSpawn()
 		enableTechsOutOfGDB()
+
+		setEnemyAis({
+			2,
+			3,
+		})
+
+		for i = 1, 2 do
+			Logic.UpgradeSettlerCategory(UpgradeCategories.LeaderBow, 2)
+			Logic.UpgradeSettlerCategory(UpgradeCategories.LeaderSword, 2)
+			Logic.UpgradeSettlerCategory(UpgradeCategories.LeaderPoleArm, 2)
+			Logic.UpgradeSettlerCategory(UpgradeCategories.SoldierBow, 2)
+			Logic.UpgradeSettlerCategory(UpgradeCategories.SoldierSword, 2)
+			Logic.UpgradeSettlerCategory(UpgradeCategories.SoldierPoleArm, 2)
+		end
 	
 		CreateRandomGoldChests()
 		CreateRandomChests()

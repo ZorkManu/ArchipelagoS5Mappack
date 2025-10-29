@@ -53,6 +53,7 @@
 		IncludeLocals("army_bigBoss")
 		IncludeLocals("army_attackingBandits")
 		IncludeLocals("army_banditGroups")
+		IncludeLocals("constant_attacker_archipelago")
 
 		IncludeLocals("quest_reachArea")
 		IncludeLocals("quest_merchant")
@@ -83,7 +84,7 @@ function Mission_InitDiplomacy()
 -- This function is called to set the player colors
 function Mission_InitPlayerColorMapping()
 	
-	Display.SetPlayerColorMapping(2, FRIENDLY_COLOR1)		-- East village
+	Display.SetPlayerColorMapping(2, 4)		-- East village
 	Display.SetPlayerColorMapping(6, FRIENDLY_COLOR2)		-- West village
 
 	Display.SetPlayerColorMapping(4, FRIENDLY_COLOR1)		-- NPCs; yellow
@@ -191,7 +192,7 @@ function Mission_FirstMapAction()
 
 	--	entry point
 
-		--StartBinkVideo("Intro") 
+		StartBinkVideo("Intro") 
 
 	-- Start Quests
 

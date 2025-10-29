@@ -85,6 +85,7 @@
 		IncludeLocals("army_enemyCastle")
 		IncludeLocals("army_swamp1")
 		IncludeLocals("army_swamp2")
+		IncludeLocals("constant_attacker_archipelago")
 		
 	
 		IncludeLocals("Map_LocalInit")		--TF_Include!

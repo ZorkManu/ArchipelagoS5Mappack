@@ -18432,7 +18432,7 @@
    </Position>
    <Orientation>9.000000e+001</Orientation>
    <Flags>0</Flags>
-   <PlayerID>1</PlayerID>
+   <PlayerID>5</PlayerID>
    <Health>-1</Health>
    <Name></Name>
    <ScriptCommandLine></ScriptCommandLine>
@@ -18524,7 +18524,7 @@
    <Flags>0</Flags>
    <PlayerID>5</PlayerID>
    <Health>-1</Health>
-   <Name></Name>
+   <Name>archery</Name>
    <ScriptCommandLine></ScriptCommandLine>
    <AmbientSoundType></AmbientSoundType>
    <Scale>1.000000e+000</Scale>
@@ -18584,7 +18584,7 @@
    <Flags>0</Flags>
    <PlayerID>5</PlayerID>
    <Health>-1</Health>
-   <Name></Name>
+   <Name>foundry1</Name>
    <ScriptCommandLine></ScriptCommandLine>
    <AmbientSoundType></AmbientSoundType>
    <Scale>1.000000e+000</Scale>
@@ -18712,14 +18712,14 @@
   <Entity classname="EGL::CGLEEntityCreator" classid="0x0753286d">
    <Type>PB_Foundry2</Type>
    <Position>
-    <X>1.950000e+004</X>
-    <Y>7.400000e+003</Y>
+    <X>1.940000e+004</X>
+    <Y>7.500000e+003</Y>
    </Position>
    <Orientation>0.000000e+000</Orientation>
    <Flags>0</Flags>
    <PlayerID>5</PlayerID>
    <Health>-1</Health>
-   <Name></Name>
+   <Name>foundry2</Name>
    <ScriptCommandLine></ScriptCommandLine>
    <AmbientSoundType></AmbientSoundType>
    <Scale>1.000000e+000</Scale>
@@ -18749,7 +18749,7 @@
    <Flags>0</Flags>
    <PlayerID>5</PlayerID>
    <Health>-1</Health>
-   <Name></Name>
+   <Name>barracks</Name>
    <ScriptCommandLine></ScriptCommandLine>
    <AmbientSoundType></AmbientSoundType>
    <Scale>1.000000e+000</Scale>
@@ -45132,7 +45132,7 @@
    </Position>
    <Orientation>2.700000e+002</Orientation>
    <Flags>0</Flags>
-   <PlayerID>1</PlayerID>
+   <PlayerID>5</PlayerID>
    <Health>-1</Health>
    <Name>openGate</Name>
    <ScriptCommandLine></ScriptCommandLine>
@@ -45447,7 +45447,7 @@
    </Position>
    <Orientation>1.800000e+002</Orientation>
    <Flags>0</Flags>
-   <PlayerID>1</PlayerID>
+   <PlayerID>5</PlayerID>
    <Health>-1</Health>
    <Name></Name>
    <ScriptCommandLine></ScriptCommandLine>
@@ -46107,7 +46107,7 @@
    </Position>
    <Orientation>2.700000e+002</Orientation>
    <Flags>0</Flags>
-   <PlayerID>1</PlayerID>
+   <PlayerID>5</PlayerID>
    <Health>-1</Health>
    <Name></Name>
    <ScriptCommandLine></ScriptCommandLine>
@@ -46122,7 +46122,7 @@
    </Position>
    <Orientation>9.000000e+001</Orientation>
    <Flags>0</Flags>
-   <PlayerID>1</PlayerID>
+   <PlayerID>5</PlayerID>
    <Health>-1</Health>
    <Name></Name>
    <ScriptCommandLine></ScriptCommandLine>
@@ -62705,19 +62705,19 @@
    <Scale>1.000000e+000</Scale>
   </Entity>
   <Entity classname="EGL::CGLEEntityCreator" classid="0x0753286d">
-   <Type>XD_Bush2</Type>
+   <Type>XD_WallStraight</Type>
    <Position>
-    <X>1.915046e+004</X>
-    <Y>8.394828e+003</Y>
+    <X>1.690000e+004</X>
+    <Y>1.280000e+004</Y>
    </Position>
-   <Orientation>4.174932e-001</Orientation>
+   <Orientation>9.000000e+001</Orientation>
    <Flags>0</Flags>
-   <PlayerID>0</PlayerID>
+   <PlayerID>5</PlayerID>
    <Health>-1</Health>
    <Name></Name>
    <ScriptCommandLine></ScriptCommandLine>
    <AmbientSoundType></AmbientSoundType>
-   <Scale>1.015619e+000</Scale>
+   <Scale>1.000000e+000</Scale>
   </Entity>
   <Entity classname="EGL::CGLEEntityCreator" classid="0x0753286d">
    <Type>XD_Bush2</Type>
@@ -62765,19 +62765,19 @@
    <Scale>1.000000e+000</Scale>
   </Entity>
   <Entity classname="EGL::CGLEEntityCreator" classid="0x0753286d">
-   <Type>XD_Bush2</Type>
+   <Type>XD_WallStraight</Type>
    <Position>
-    <X>1.897504e+004</X>
-    <Y>8.398520e+003</Y>
+    <X>1.590000e+004</X>
+    <Y>1.280000e+004</Y>
    </Position>
-   <Orientation>4.605609e+001</Orientation>
+   <Orientation>9.000000e+001</Orientation>
    <Flags>0</Flags>
-   <PlayerID>0</PlayerID>
+   <PlayerID>5</PlayerID>
    <Health>-1</Health>
    <Name></Name>
    <ScriptCommandLine></ScriptCommandLine>
    <AmbientSoundType></AmbientSoundType>
-   <Scale>9.145177e-001</Scale>
+   <Scale>1.000000e+000</Scale>
   </Entity>
   <Entity classname="EGL::CGLEEntityCreator" classid="0x0753286d">
    <Type>XD_Bush2</Type>
@@ -87080,29 +87080,29 @@
    <Scale>1.000000e+000</Scale>
   </Entity>
   <Entity classname="EGL::CGLEEntityCreator" classid="0x0753286d">
-   <Type>XD_WallStraight</Type>
+   <Type>XD_VillageCenter</Type>
    <Position>
-    <X>1.590000e+004</X>
-    <Y>1.280000e+004</Y>
+    <X>4.720000e+004</X>
+    <Y>4.710000e+004</Y>
    </Position>
-   <Orientation>9.000000e+001</Orientation>
+   <Orientation>0.000000e+000</Orientation>
    <Flags>0</Flags>
-   <PlayerID>1</PlayerID>
+   <PlayerID>0</PlayerID>
    <Health>-1</Health>
    <Name></Name>
    <ScriptCommandLine></ScriptCommandLine>
    <AmbientSoundType></AmbientSoundType>
-   <Scale>1.000000e+000</Scale>
+   <Scale>0.000000e+000</Scale>
   </Entity>
   <Entity classname="EGL::CGLEEntityCreator" classid="0x0753286d">
-   <Type>XD_WallStraight</Type>
+   <Type>PB_VillageCenter3</Type>
    <Position>
-    <X>1.690000e+004</X>
-    <Y>1.280000e+004</Y>
+    <X>4.720000e+004</X>
+    <Y>4.710000e+004</Y>
    </Position>
-   <Orientation>9.000000e+001</Orientation>
+   <Orientation>0.000000e+000</Orientation>
    <Flags>0</Flags>
-   <PlayerID>1</PlayerID>
+   <PlayerID>5</PlayerID>
    <Health>-1</Health>
    <Name></Name>
    <ScriptCommandLine></ScriptCommandLine>
@@ -87720,6 +87720,66 @@
    <PlayerID>1</PlayerID>
    <Health>-1</Health>
    <Name>GoldChest3</Name>
+   <ScriptCommandLine></ScriptCommandLine>
+   <AmbientSoundType></AmbientSoundType>
+   <Scale>1.000000e+000</Scale>
+  </Entity>
+  <Entity classname="EGL::CGLEEntityCreator" classid="0x0753286d">
+   <Type>XD_VillageCenter</Type>
+   <Position>
+    <X>4.420000e+004</X>
+    <Y>4.710000e+004</Y>
+   </Position>
+   <Orientation>0.000000e+000</Orientation>
+   <Flags>0</Flags>
+   <PlayerID>0</PlayerID>
+   <Health>-1</Health>
+   <Name></Name>
+   <ScriptCommandLine></ScriptCommandLine>
+   <AmbientSoundType></AmbientSoundType>
+   <Scale>0.000000e+000</Scale>
+  </Entity>
+  <Entity classname="EGL::CGLEEntityCreator" classid="0x0753286d">
+   <Type>PB_VillageCenter3</Type>
+   <Position>
+    <X>4.420000e+004</X>
+    <Y>4.710000e+004</Y>
+   </Position>
+   <Orientation>0.000000e+000</Orientation>
+   <Flags>0</Flags>
+   <PlayerID>5</PlayerID>
+   <Health>-1</Health>
+   <Name></Name>
+   <ScriptCommandLine></ScriptCommandLine>
+   <AmbientSoundType></AmbientSoundType>
+   <Scale>1.000000e+000</Scale>
+  </Entity>
+  <Entity classname="EGL::CGLEEntityCreator" classid="0x0753286d">
+   <Type>XD_VillageCenter</Type>
+   <Position>
+    <X>4.570000e+004</X>
+    <Y>4.710000e+004</Y>
+   </Position>
+   <Orientation>0.000000e+000</Orientation>
+   <Flags>0</Flags>
+   <PlayerID>0</PlayerID>
+   <Health>-1</Health>
+   <Name></Name>
+   <ScriptCommandLine></ScriptCommandLine>
+   <AmbientSoundType></AmbientSoundType>
+   <Scale>0.000000e+000</Scale>
+  </Entity>
+  <Entity classname="EGL::CGLEEntityCreator" classid="0x0753286d">
+   <Type>PB_VillageCenter3</Type>
+   <Position>
+    <X>4.570000e+004</X>
+    <Y>4.710000e+004</Y>
+   </Position>
+   <Orientation>0.000000e+000</Orientation>
+   <Flags>0</Flags>
+   <PlayerID>5</PlayerID>
+   <Health>-1</Health>
+   <Name></Name>
    <ScriptCommandLine></ScriptCommandLine>
    <AmbientSoundType></AmbientSoundType>
    <Scale>1.000000e+000</Scale>

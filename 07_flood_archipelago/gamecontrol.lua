@@ -27,7 +27,7 @@ startQuestMoveToLeo = function()
 		
 		createArmyAttack1()
 		createArmyAttack2()
-		createArmyAttack3()
+		--createArmyAttack3()
 		createArmyBandits()
 		
 		createArmyCleycourtPatrol()

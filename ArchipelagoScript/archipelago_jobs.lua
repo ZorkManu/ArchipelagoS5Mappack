@@ -3,6 +3,9 @@
 --------------------------------------------------------------------------------
 
 HEROCOUNT = 5
+ENEMYAIS = {
+
+}
 
 SAVEFILENAME = "__archipelago-"
 CURRENTFILENAME = "__archipelago-"
@@ -11,8 +14,18 @@ function archipelago_init()
 	Script.Load("maps\\user\\ArchipelagoScript\\archipelago_unit_tribute.lua")
 	Script.Load("maps\\user\\ArchipelagoScript\\archipelago_quest_locations.lua")
 	Script.Load("maps\\user\\EMS\\tools\\s5CommunityLib\\lib\\MemLib\\MemLib.lua")
+	Script.Load("maps\\user\\EMS\\tools\\s5CommunityLib\\packer\\devLoad.lua")
+	mcbPacker.Paths = {
+		{"data/maps/user/ems/tools/",".lua"},
+		{"data/maps/user/ems/tools/",".luac"},
+	}
+	Script.Load("maps\\user\\EMS\\tools\\s5CommunityLib\\lib\\UnlimitedArmy.lua")
+	Script.Load("maps\\user\\EMS\\tools\\s5CommunityLib\\lib\\UnlimitedArmyRecruiter.lua")
+	Script.Load("maps\\user\\EMS\\tools\\s5CommunityLib\\lib\\UnlimitedArmySpawnGenerator.lua")
 	MemLib.Load("BuildingType")
-	--MemLib.BuildingType.SetAttractionSlots(Entities.PB_Headquarters1, 5)
+	MemLib.Load("EntityIterator")
+	MemLib.Load("Settler")
+	TriggerFix.AllScriptsLoaded()
 	reloadGDBItemsSave()
 	--forbid all techs
 	forbidAllItemTechs()
@@ -20,7 +33,11 @@ function archipelago_init()
 	initBuyableHeroes()
 	initUnitTributes()
 	setPlayerColor()
+	setGameSpeed()
+	--StartSimpleJob("checkMotivation")
+	initAttractionLimit()
 	StartSimpleJob("checkForNewItems")
+	StartSimpleJob("aiTechnologies")
 	initQuestLog()
 end
 
@@ -198,35 +215,35 @@ end
 
 function giveStartingRessources()
 	if(GDB.GetString("starting_gold") ~= "") then
-		AddGold(tonumber(GDB.GetString("starting_gold")*50))
+		AddGold(tonumber(GDB.GetString("starting_gold")*100))
 	end
 	if(GDB.GetString("starting_wood") ~= "") then
-		AddWood(tonumber(GDB.GetString("starting_wood")*50))
+		AddWood(tonumber(GDB.GetString("starting_wood")*100))
 	end
 	if(GDB.GetString("starting_stone") ~= "") then
-		AddStone(tonumber(GDB.GetString("starting_stone")*50))
+		AddStone(tonumber(GDB.GetString("starting_stone")*100))
 	end
 	if(GDB.GetString("starting_iron") ~= "") then
-		AddIron(tonumber(GDB.GetString("starting_iron")*50))
+		AddIron(tonumber(GDB.GetString("starting_iron")*100))
 	end
 	if(GDB.GetString("starting_clay") ~= "") then
-		AddClay(tonumber(GDB.GetString("starting_clay")*50))
+		AddClay(tonumber(GDB.GetString("starting_clay")*100))
 	end
 	if(GDB.GetString("starting_sulfur") ~= "") then
-		AddSulfur(tonumber(GDB.GetString("starting_sulfur")*50))
+		AddSulfur(tonumber(GDB.GetString("starting_sulfur")*100))
 	end
 	
 end
 
+function initAttractionLimit()
+	if GDB.GetString("additional_attraction") ~= "" and GDB.GetString("additional_attraction") ~= "0" then
+		MemLib.BuildingType.SetAttractionSlots(Entities.PB_Headquarters1, tonumber(GDB.GetString("additional_attraction"))*5)
+		MemLib.BuildingType.SetAttractionSlots(Entities.PB_Headquarters2, tonumber(GDB.GetString("additional_attraction"))*5)
+		MemLib.BuildingType.SetAttractionSlots(Entities.PB_Headquarters3, tonumber(GDB.GetString("additional_attraction"))*5)
+	end
+end
+
 function enableTechsOutOfGDB()
-	--allow mandatory troop recruitement buildings (starting unit could be random)
-	--ResearchTechnology(Technologies.B_Barracks)
-	--ResearchTechnology(Technologies.B_Archery)
-	--ResearchTechnology(Technologies.B_Stables)
-	--ResearchTechnology(Technologies.B_Foundry)
-	--ResearchTechnology(Technologies.B_GunsmithWorkshop)
-	--ResearchTechnology(Technologies.B_Tavern)
-	--ResearchTechnology(Technologies.UP1_Tavern)
 	AllowTechnology(Technologies.UP1_Headquarter)
 	AllowTechnology(Technologies.UP2_Headquarter)
 
@@ -730,6 +747,7 @@ function checkForNewItems()
 		end
 		Message("Someone send You @color:255,255,0 ".. item[1] .. " @color:255,255,255 !")
 		enableTechsOutOfGDB()
+		initAttractionLimit()
 	end
 end
 
@@ -876,6 +894,7 @@ function reloadGDBItemsSave()
 		enableTechsOutOfGDB()
     	Mission_OnSaveGameLoadedBackup()
 		setPlayerColor()
+		setGameSpeed()
 	end
 end
 
@@ -883,14 +902,80 @@ function setPlayerColor()
 	Display.SetPlayerColorMapping(1, tonumber(GDB.GetString("player_color")))
 end
 
+function setGameSpeed()
+	if GDB.GetString("game_speed") == "1" then
+		Game.GameTimeSetFactor(0.75)
+	end
+	if GDB.GetString("game_speed") == "3" then
+		Game.GameTimeSetFactor(1.25)
+	end
+end
+
+function checkMotivation()
+	for workerId in MemLib.EntityIterator.Iterator(MemLib.EntityIterator.OfPlayer(1), MemLib.EntityIterator.OfCategory(EntityCategories.Worker)) do
+		MemLib.Settler.SetMotivation(workerId, (tonumber(GDB.GetString("additional_motivation")) or 0))
+	end
+end
+
+function setEnemyAis(_enemyAis)
+	ENEMYAIS = _enemyAis
+end
+
+function aiTechnologies()
+	local diff = getArchipelagoDifficultyMultiplier()*300
+	local currentTime = Counter.Tick2("aiTechnologies", 7200 - diff)
+
+	if currentTime == 3200 - diff then
+		for i in pairs(ENEMYAIS) do
+			ResearchTechnology(Technologies.T_LeatherMailArmor,i)
+			ResearchTechnology(Technologies.T_SoftArcherArmor,i)
+		end
+		return false
+	end
+	if currentTime == 5300 - diff then
+		for i in pairs(ENEMYAIS) do
+			ResearchTechnology(Technologies.T_ChainMailArmor,i)
+			ResearchTechnology(Technologies.T_PaddedArcherArmor,i)
+			ResearchTechnology(Technologies.T_MasterOfSmithery,i)
+			ResearchTechnology(Technologies.T_FleeceArmor,i)
+			ResearchTechnology(Technologies.T_LeadShot,i)
+			ResearchTechnology(Technologies.T_EnhancedGunPowder,i)
+			ResearchTechnology(Technologies.T_Fletching,i)
+			ResearchTechnology(Technologies.T_WoodAging,i)
+		end
+		return false
+	end
+	if currentTime == 7199 - diff then
+		for i in pairs(ENEMYAIS) do
+			ResearchTechnology(Technologies.T_PlateMailArmor,i)
+			ResearchTechnology(Technologies.T_LeatherArcherArmor,i)
+			ResearchTechnology(Technologies.T_IronCasting,i)
+			ResearchTechnology(Technologies.T_FleeceLinedLeatherArmor,i)
+			ResearchTechnology(Technologies.T_Sights,i)
+			ResearchTechnology(Technologies.T_BlisteringCannonballs,i)
+			ResearchTechnology(Technologies.T_BodkinArrow,i)
+			ResearchTechnology(Technologies.T_Turnery,i)
+		end
+		return true
+	end
+
+end
+
 function getArchipelagoDifficulty()
 	return GDB.GetString("difficulty") ~= "" and tonumber(GDB.GetString("difficulty")) or 1
 end
 
 function getArchipelagoProgression()
-	return GDB.GetString("progression") ~= "" and tonumber(GDB.GetString("progression")) or 1
+	return GDB.GetString("progression") ~= "" and tonumber(GDB.GetString("progression")) or 0
 end
 
 function getArchipelagoDifficultyMultiplier()
-	return getArchipelagoDifficulty() * getArchipelagoProgression()
+	return getArchipelagoDifficulty() + getArchipelagoProgression()
+end
+
+function Modulo(_A, _B)
+    while _A > _B do
+        _A = _A - _B
+    end
+    return _A
 end

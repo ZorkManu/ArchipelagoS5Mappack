@@ -40,15 +40,15 @@ createArmyAttack2 = function()
 			maxNumberOfSoldiers = 4,
 			experiencePoints 	= LOW_EXPERIENCE,
 		}			
+		local diff = getArchipelagoDifficultyMultiplier()
 
 		
-		troopDescription.leaderType = ARMY2_TROOP1_TYPE1
-		for i = 1, getArchipelagoDifficultyMultiplier() do
+		troopDescription.leaderType = Entities["PU_LeaderSword" .. math.min(1,math.max(4,diff-1))]
+		for i = 1, diff do
 			EnlargeArmy(armyAttack2,troopDescription)
 		end
 
-		troopDescription.leaderType = ARMY2_TROOP1_TYPE2
-		for i = 1, getArchipelagoDifficultyMultiplier() do
+		for i = 1, diff do
 			EnlargeArmy(armyAttack2,troopDescription)
 		end
 
@@ -171,13 +171,15 @@ createArmyAttack2 = function()
 					Report("army2, Angriff Nr. "..armyAttack2.control.attack)
 
 				if armyAttack2.control.attack >= 0 then
+
+					diff = getArchipelagoDifficultyMultiplier()
 				
-					troopDescription.leaderType = ARMY2_TROOP2_TYPE1
+					troopDescription.leaderType = Entities["PU_LeaderSword" .. math.min(1,math.max(4,diff-1))]
 					for i = 1, getArchipelagoDifficultyMultiplier() do
 						EnlargeArmy(armyAttack2,troopDescription)
 					end
     	    		
-					troopDescription.leaderType = ARMY2_TROOP2_TYPE2
+					troopDescription.leaderType = Entities["PU_LeaderSword" .. math.min(1,math.max(4,diff-1))]
 					for i = 1, getArchipelagoDifficultyMultiplier() do
 						EnlargeArmy(armyAttack2,troopDescription)
 					end

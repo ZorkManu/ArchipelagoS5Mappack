@@ -16,7 +16,7 @@ endQuestNpcPilgrim = function()
 
 	createBriefingNpcPilgrim()
 
-	if GetPlayer("Pilgrim") == GetHumanPlayer() then
+	if GetPlayer("PilgrimNPC") == GetHumanPlayer() then
 	
 		createBriefingNpcPilgrim_Failed()
 	

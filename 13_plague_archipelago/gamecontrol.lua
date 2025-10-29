@@ -67,9 +67,11 @@ start1stQuest = function()
 		
 	--	ai
 		
-		createArmySouthernAssault()
+		initSouthernAttacker()
+
+		createRecruitingArmies()
 		
-		createArmyFirstLineDefenders()
+		--createArmyFirstLineDefenders()
 		
 		createArmyMainForce()
 

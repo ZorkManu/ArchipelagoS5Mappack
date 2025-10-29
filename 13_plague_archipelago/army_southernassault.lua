@@ -1,381 +1,62 @@
+WAVE = 1
 
--- Raiders from South
 
-DEPLOY		= 1
-ATTACK 		= 2
-DEPLOY_A	= 3
-DEPLOY_B	= 4
-DEPLOY_TIME	= 10
-RESPAWN_TIME = 5 * 60
+function initSouthernAttacker()
+	StartSimpleJob("checkForSouthernAttacker")
+end
 
-createArmySouthernAssault = function()
-
-	--	attacking bandits a
-
-		armySouthernAssault							= {}
-	
-		armySouthernAssault.player 					= 3
-		armySouthernAssault.id						= 1
-		armySouthernAssault.strength				= 3
-		armySouthernAssault.position				= GetPosition("KI4_Spawnpoint")
-		armySouthernAssault.rodeLength				= 2000
-		armySouthernAssault.beAgressive				= true
-		armySouthernAssault.control					= {}
-		armySouthernAssault.control.setupDelay		= (RESPAWN_TIME * 2) + Logic.GetRandom(RESPAWN_TIME / 2)
-		armySouthernAssault.control.strength		= 0
-		armySouthernAssault.control.attack			= 15	--12			--number of attacks
-		armySouthernAssault.control.deployTime		= DEPLOY_TIME
-		armySouthernAssault.control.mode			= DEPLOY
-		
-		SetupArmy(armySouthernAssault)
-		
-	--	start controlling job		
-		
-		StartJob("SetupArmySouthernAssault")
-
+function checkForSouthernAttacker()
+	local respawnTime = 520 - getArchipelagoDifficulty()*30
+	if Counter.Tick2("initSouthernAttacker", respawnTime) then
+		createArmySouthernAssault()
 	end
+end
 
-
------------------------------------------------------------------------------------------------------------------------	
---
---	JOB: "SetupArmySouthernAssault"
---
------------------------------------------------------------------------------------------------------------------------	
-	-------------------------------------------------------------------------------------------------------------------
-	Condition_SetupArmySouthernAssault = function()
-	-------------------------------------------------------------------------------------------------------------------
-		
-		armySouthernAssault.control.setupDelay = armySouthernAssault.control.setupDelay -1	
-		
-		Report("set up delay "..armySouthernAssault.control.setupDelay)
-		
-		if armySouthernAssault.control.setupDelay == 60 * 3 then
-		
-			SpokenMessage(String.MainKey.."Message_SoonAttack")
---			Message("Be prepared! Enemy troops are coming closer.")
-			
-			end
-		
-		return armySouthernAssault.control.setupDelay <= 0
-		
-		end
-
-
-
-
-
-		
-	-------------------------------------------------------------------------------------------------------------------
-	Action_SetupArmySouthernAssault = function()
-	-------------------------------------------------------------------------------------------------------------------
-		
-		armySouthernAssault.control.setupDelay = RESPAWN_TIME + Logic.GetRandom(RESPAWN_TIME /2)
-
-		armySouthernAssault.strength = 1 + armySouthernAssault.control.strength / 2
-		
-		if armySouthernAssault.strength > 8 then
-		
-			armySouthernAssault.strength = 8
-			
-			end
-
-		local wave = Logic.GetRandom(4)
-		
-		if 		wave == 0 then
-			setupAttackWave1(armySouthernAssault.control.strength / 2)		
-		elseif	wave == 1 then
-			setupAttackWave2(armySouthernAssault.control.strength / 2)		
-		elseif	wave == 2 then
-			setupAttackWave3(armySouthernAssault.control.strength / 2)		
-		elseif	wave >= 3 then
-			setupAttackWave4(armySouthernAssault.control.strength / 2)		
-			end
-
-		armySouthernAssault.control.mode = DEPLOY
-
-		StartJob("DeployArmySouthernAssault")
-
-		return true
-		
-		end
-
-
-
------------------------------------------------------------------------------------------------------------------------	
---
---	JOB: "DeployArmySouthernAssault"
---
------------------------------------------------------------------------------------------------------------------------	
-	-------------------------------------------------------------------------------------------------------------------
-	Condition_DeployArmySouthernAssault = function()
-	-------------------------------------------------------------------------------------------------------------------
-		
-		return true						
-		
-		end		
-		
-	-------------------------------------------------------------------------------------------------------------------
-	Action_DeployArmySouthernAssault = function()
-	-------------------------------------------------------------------------------------------------------------------
-
-		if armySouthernAssault.control.mode == DEPLOY then		
-		
-			if Logic.GetRandom(100) > 50 then			
-		
-				Report("Deploy A")
-				Report("Deploy A")
-				Report("Deploy A")
-				Report("Deploy A")
-				Report("Deploy A")
-		
-				Redeploy(armySouthernAssault,GetPosition("attack1"),2000)
-		
-				armySouthernAssault.control.mode = DEPLOY_A
-		
-			else
-			
-				Report("Deploy B")
-				Report("Deploy B")
-				Report("Deploy B")
-				Report("Deploy B")
-				Report("Deploy B")
-		
-				Redeploy(armySouthernAssault,GetPosition("attack2"),2000)
-		
-				armySouthernAssault.control.mode = DEPLOY_B	
-		
-				end		
-		
-			return false		
-		
-		else
-		
-			Report("Deploy "..armySouthernAssault.control.deployTime.." Mode: "..armySouthernAssault.control.mode)
-		
-			armySouthernAssault.control.deployTime = armySouthernAssault.control.deployTime -1
-		
-			if armySouthernAssault.control.deployTime <= 0 then
-		
-				Report("southern assault army: Start Assault")
-		
-				StartJob("ControlArmySouthernAssault")
-		
-				return true
-		
-				end
-		
-			end		
-		
-		return false		
-		
-		end
-	
-
-	
------------------------------------------------------------------------------------------------------------------------	
---
---	JOB: "ControlArmySouthernAssault"
---
------------------------------------------------------------------------------------------------------------------------	
-	-------------------------------------------------------------------------------------------------------------------
-	Condition_ControlArmySouthernAssault = function()
-	-------------------------------------------------------------------------------------------------------------------
-
-		return Counter.Tick2("ControlArmySouthernAssault",5)
-		
-		end
-		
-	-------------------------------------------------------------------------------------------------------------------
-	Action_ControlArmySouthernAssault = function()
-	-------------------------------------------------------------------------------------------------------------------
-		
-		if IsDead(armySouthernAssault) then
-		
-			if armySouthernAssault.control.attack <= 0 then
-			
-				return true
-				
-				end
-		
-			armySouthernAssault.control.attack = armySouthernAssault.control.attack -1
-		
-			Redeploy(armySouthernAssault,GetPosition("KI4_Spawnpoint"),2000)
-			
-			armySouthernAssault.control.strength = armySouthernAssault.control.strength +1
-			
-			StartJob("SetupArmySouthernAssault")
-			
-			return true
-			
-		elseif IsVeryWeak(armySouthernAssault) and Logic.GetRandom(100) > 85 then
-		
-			local troopDescription = {
-	
-				minNumberOfSoldiers	= 0,
-				maxNumberOfSoldiers	= 8,
-				experiencePoints 	= MEDIUM_EXPERIENCE,
-			}			
-		
-			local troopType = Logic.GetRandom(4)
-			
-			if 		troopType == 0 then
-			
-				troopDescription.leaderType = GetHeavyCavalry(armySouthernAssault.control.strength / 2)
-
-			elseif	troopType == 1 then
-			
-				troopDescription.leaderType = GetHeavyCavalry(armySouthernAssault.control.strength / 2)
-			
-			elseif	troopType == 2 then
-			
-				troopDescription.leaderType = GetLightCavalry(armySouthernAssault.control.strength / 2)
-		
-			elseif	troopType == 3 then
-			
-				troopDescription.leaderType = GetLightCavalry(armySouthernAssault.control.strength / 2)
-			
-				end		
-
-			EnlargeArmy(armySouthernAssault,troopDescription)
-			
-			return false
-			
-		else
-			
-			Advance(armySouthernAssault)
-
-			return false
-
-			end
-
-		return false
-		
-		end
-	
-	
------------------------------------------------------------------------------------------------------------------------	
-	
-setupAttackWave1 = function(_strength)
-
-	local troopDescription = {
-	
-		minNumberOfSoldiers	= 0,
-		maxNumberOfSoldiers	= 8,
-		experiencePoints 	= MEDIUM_EXPERIENCE,
-	}			
-
-	local counter = {}
-	counter.value = 0
-
-	troopDescription.leaderType = GetPoleArm(_strength)
-
-	CountedEnlargeArmy(armySouthernAssault,troopDescription,counter)
-	CountedEnlargeArmy(armySouthernAssault,troopDescription,counter)
-
-	troopDescription.leaderType = GetBow(_strength)
-
-	CountedEnlargeArmy(armySouthernAssault,troopDescription,counter)
-	CountedEnlargeArmy(armySouthernAssault,troopDescription,counter)
-	CountedEnlargeArmy(armySouthernAssault,troopDescription,counter)
-
-	troopDescription.leaderType = GetSword(_strength)
-
-	CountedEnlargeArmy(armySouthernAssault,troopDescription,counter)
-	CountedEnlargeArmy(armySouthernAssault,troopDescription,counter)
-	CountedEnlargeArmy(armySouthernAssault,troopDescription,counter)
-
+function createArmySouthernAssault()
+	local southern_attack_pos = GetPosition("KI4_Spawnpoint")
+	local diff = getArchipelagoDifficultyMultiplier()
+	local leaderLevel = math.min(4, math.max(2,diff-1))
+	local leaderLevelCav = 1
+	if diff > 3 then
+		leaderLevelCav = 2
 	end
-	
------------------------------------------------------------------------------------------------------------------------	
-
-setupAttackWave2 = function(_strength)
-
-	local troopDescription = {
-	
-		minNumberOfSoldiers	= 0,
-		maxNumberOfSoldiers	= 8,
-		experiencePoints 	= MEDIUM_EXPERIENCE,
-	}			
-
-	local counter = {}
-	counter.value = 0
-
-
-	troopDescription.leaderType = GetLightCavalry(_strength)
-
-	CountedEnlargeArmy(armySouthernAssault,troopDescription,counter)
-	CountedEnlargeArmy(armySouthernAssault,troopDescription,counter)
-	CountedEnlargeArmy(armySouthernAssault,troopDescription,counter)
-	CountedEnlargeArmy(armySouthernAssault,troopDescription,counter)
-
-	troopDescription.leaderType = GetHeavyCavalry(_strength)
-
-	CountedEnlargeArmy(armySouthernAssault,troopDescription,counter)
-	CountedEnlargeArmy(armySouthernAssault,troopDescription,counter)
-	CountedEnlargeArmy(armySouthernAssault,troopDescription,counter)
-	CountedEnlargeArmy(armySouthernAssault,troopDescription,counter)
-
+	local soldierAmount = math.min(8, diff + 2)
+	local waveArmy = UnlimitedArmy:New({
+		Player = 2,
+		Area = 20000,
+		TransitAttackMove = true,
+		AutoDestroyIfEmpty = true
+	})
+	if Modulo(WAVE,3) == 2 then
+		for i = 1, 1 + math.floor(diff/4) + math.floor(WAVE/3) do
+			waveArmy:CreateLeaderForArmy(Entities["PU_LeaderPoleArm" .. leaderLevel], soldierAmount, southern_attack_pos, 2)
+		end
+		for i = 1, 2 + math.floor(diff/3) do
+			waveArmy:CreateLeaderForArmy(Entities["PU_LeaderBow" .. leaderLevel], soldierAmount, southern_attack_pos, 2)
+			waveArmy:CreateLeaderForArmy(Entities["PU_LeaderSword" .. leaderLevel], soldierAmount, southern_attack_pos, 2)
+		end
 	end
-	
------------------------------------------------------------------------------------------------------------------------	
-	
-setupAttackWave3 = function(_strength)
-
-	local troopDescription = {
-	
-		minNumberOfSoldiers	= 0,
-		maxNumberOfSoldiers	= 8,
-		experiencePoints 	= MEDIUM_EXPERIENCE,
-	}			
-
-	local counter = {}
-	counter.value = 0
-
-	troopDescription.leaderType = GetBow(_strength)
-
-	CountedEnlargeArmy(armySouthernAssault,troopDescription,counter)
-	CountedEnlargeArmy(armySouthernAssault,troopDescription,counter)
-	CountedEnlargeArmy(armySouthernAssault,troopDescription,counter)
-	CountedEnlargeArmy(armySouthernAssault,troopDescription,counter)
-	CountedEnlargeArmy(armySouthernAssault,troopDescription,counter)
-
-	troopDescription.leaderType = GetSword(_strength)
-
-	CountedEnlargeArmy(armySouthernAssault,troopDescription,counter)
-	CountedEnlargeArmy(armySouthernAssault,troopDescription,counter)
-	CountedEnlargeArmy(armySouthernAssault,troopDescription,counter)
-
-	end	
-	
------------------------------------------------------------------------------------------------------------------------	
-	
-setupAttackWave4 = function(_strength)
-
-	local troopDescription = {
-	
-		minNumberOfSoldiers	= 0,
-		maxNumberOfSoldiers	= 8,
-		experiencePoints 	= MEDIUM_EXPERIENCE,
-	}			
-
-	local counter = {}
-	counter.value = 0
-	
-	troopDescription.leaderType = GetPoleArm(_strength)
-
-	CountedEnlargeArmy(armySouthernAssault,troopDescription,counter)
-	CountedEnlargeArmy(armySouthernAssault,troopDescription,counter)
-	CountedEnlargeArmy(armySouthernAssault,troopDescription,counter)
-	CountedEnlargeArmy(armySouthernAssault,troopDescription,counter)
-	CountedEnlargeArmy(armySouthernAssault,troopDescription,counter)
-
-	troopDescription.leaderType = GetCannon(_strength)
-
-	CountedEnlargeArmy(armySouthernAssault,troopDescription,counter)
-	CountedEnlargeArmy(armySouthernAssault,troopDescription,counter)
-	CountedEnlargeArmy(armySouthernAssault,troopDescription,counter)
-
-	end	
-	
-
-
+	if Modulo(WAVE,3) == 1 then
+		for i = 1, 2 + math.floor(diff/3) + math.floor(WAVE/3) do
+			waveArmy:CreateLeaderForArmy(Entities["PU_LeaderHeavyCavalry" .. leaderLevelCav], 3, southern_attack_pos, 2)
+			waveArmy:CreateLeaderForArmy(Entities["PU_LeaderCavalry" .. leaderLevelCav], 3, southern_attack_pos, 2)
+		end
+	end
+	if Modulo(WAVE,3) == 0 then
+		waveArmy:CreateLeaderForArmy(Entities["PU_LeaderPoleArm" .. leaderLevel], soldierAmount, southern_attack_pos, 2)
+		for i = 1, 2 + math.floor(diff/3) + math.floor(WAVE/3) do
+			waveArmy:CreateLeaderForArmy(Entities["PU_Cannon" .. leaderLevel], soldierAmount, southern_attack_pos, 2)
+			waveArmy:CreateLeaderForArmy(Entities["PU_LeaderRifle" .. leaderLevelCav], soldierAmount, southern_attack_pos, 2)
+		end
+	end
+	WAVE = WAVE + 1
+	if math.random(0,1) then
+		waveArmy:AddCommandMove(GetPosition("attack1"))
+	else
+		waveArmy:AddCommandMove(GetPosition("attack2"))
+		waveArmy:AddCommandWaitForIdle()
+		waveArmy:AddCommandMove(GetPosition("base_attack"))
+	end
+	waveArmy:AddCommandWaitForIdle()
+	waveArmy:AddCommandAttackNearestTarget(true)
+end

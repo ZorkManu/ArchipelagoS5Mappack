@@ -19,7 +19,7 @@ createArmyBigBoss = function()
 			
 		local troopDescription = {
 		
-			maxNumberOfSoldiers	= 4,
+			maxNumberOfSoldiers	= 8,
 			minNumberOfSoldiers	= 0,
 			experiencePoints 	= LOW_EXPERIENCE,
 		}			
@@ -27,6 +27,11 @@ createArmyBigBoss = function()
 		--	create pike men
 
 			troopDescription.leaderType = Entities.CU_BlackKnight_LeaderMace1
+			if getArchipelagoDifficultyMultiplier() == 2 then
+				troopDescription.leaderType = Entities.PU_LeaderSword2
+			elseif getArchipelagoDifficultyMultiplier() >= 3 then
+				troopDescription.leaderType = Entities.PU_LeaderSword3
+			end
 --			troopDescription.leaderType = Entities.PU_LeaderPoleArm1
 			for i = 1, getArchipelagoDifficultyMultiplier()*2 do
 				EnlargeArmy(armyBigBossA,troopDescription)

@@ -133,10 +133,37 @@ function Mission_FirstMapAction()
 	HeroSpawn()
 	enableTechsOutOfGDB()
 
+	setEnemyAis({
+		2,
+		5
+	})
+
 	if IsDead("Pilgrim") and GDB.GetString("pilgrim") == "1" then
 		CreateMilitaryGroup(1, Entities.PU_Hero2, 0, GetPosition("HeroSpawn"), "Pilgrim")
 		CreateChestOpener("Pilgrim")
 		HEROCOUNT = 4
+	end
+
+	local enemyUpgrades = 0
+
+	local diff =  getArchipelagoDifficultyMultiplier()
+
+	if diff > 2 then
+		enemyUpgrades = 1
+		if diff >= 4 then
+			enemyUpgrades = 2
+		end
+	end
+
+	if enemyUpgrades > 0 then
+		for i = 1, enemyUpgrades do
+			Logic.UpgradeSettlerCategory(UpgradeCategories.LeaderBow, 5)
+			Logic.UpgradeSettlerCategory(UpgradeCategories.LeaderSword, 5)
+			Logic.UpgradeSettlerCategory(UpgradeCategories.LeaderPoleArm, 5)
+			Logic.UpgradeSettlerCategory(UpgradeCategories.SoldierBow, 5)
+			Logic.UpgradeSettlerCategory(UpgradeCategories.SoldierSword, 5)
+			Logic.UpgradeSettlerCategory(UpgradeCategories.SoldierPoleArm, 5)
+		end
 	end
 	
 		CreateRandomGoldChests()

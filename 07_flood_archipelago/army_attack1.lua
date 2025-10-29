@@ -1,95 +1,81 @@
 createArmyAttack1 = function()
 
-	--	set up
+	local _diff = getArchipelagoDifficultyMultiplier()
 
-		armyAttack1						= {}
-	
-		armyAttack1.player 				= 8
-		armyAttack1.id					= 1
-		armyAttack1.strength			= 2
-		armyAttack1.position			= GetPosition("army1")
-		armyAttack1.rodeLength			= 50
-		
-		SetupArmy(armyAttack1)
-		
-	--	job		
-		
-		StartJob("SetupArmyAttack1")
-
+	local armyAttack = UnlimitedArmy:New({
+        Player = 8,
+        Area = 50,
+        Formation = UnlimitedArmy.Formations.Lines,
+        LeaderFormation  = FormationFunktion,
+        TransitAttackMove = true,
+    })
+	local _armySize =  math.floor(_diff/2)
+    SpawnerTower = UnlimitedArmySpawnGenerator:New(armyAttack, {
+        Position = GetPosition("army2"),
+        ArmySize = 3 + _armySize,
+        SpawnCounter = 30,
+        SpawnLeaders = 3 + _armySize,
+        LeaderDesc = {
+            {LeaderType = Entities["PU_LeaderSword" .. math.min(4, math.max(1, _diff-1))], SoldierNum = 8, SpawnNum = 1, Looped = true, Experience = 0},
+        },
+		Generator = "tower1",
+    })
+	armyAttack:AddCommandMove(GetPosition("defenders2"), true)
+	armyAttack:AddCommandWaitForIdle(true)
+	armyAttack:AddCommandMove(GetPosition("attackBarmecia"), true)
+	armyAttack:AddCommandWaitForIdle(true)
+	armyAttack:AddCommandAttackNearestTarget(14000,true)
+	if _diff > 2 then
+		StartSimpleJob("increaseEnemySoldiersTower")
 	end
 
------------------------------------------------------------------------------------------------------------------------	
---
---	JOB: "SetupArmyAttack1"
---
------------------------------------------------------------------------------------------------------------------------	
-	-------------------------------------------------------------------------------------------------------------------
-	Condition_SetupArmyAttack1 = function()
-	-------------------------------------------------------------------------------------------------------------------
-	
-		return Counter.Tick2("SetupArmyAttack1",82)
-						
-		end
-		
-	-------------------------------------------------------------------------------------------------------------------
-	Action_SetupArmyAttack1 = function()
-	-------------------------------------------------------------------------------------------------------------------
+	local armyDefend = UnlimitedArmy:New({
+        Player = 8,
+        Area = 50,
+        Formation = UnlimitedArmy.Formations.Lines,
+        LeaderFormation  = FormationFunktion,
+        TransitAttackMove = true,
+    })
+    SpawnerTowerDefend = UnlimitedArmySpawnGenerator:New(armyDefend, {
+        Position = GetPosition("army3"),
+        ArmySize = 3 + _armySize,
+        SpawnCounter = 30,
+        SpawnLeaders = 3,
+        LeaderDesc = {
+            {LeaderType = Entities["PU_LeaderSword" .. math.min(4, math.max(1, _diff-1))], SoldierNum = 8, SpawnNum = 1, Looped = true, Experience = 0},
+        },
+		Generator = "tower2",
+    })
+	armyDefend:AddCommandDefend(GetPosition("army3"),4000)
 
-		if HasFullStrength(armyAttack1) then
-		
-			StartJob("ControlArmyAttack1")
-			
+	local armyDefendIronMine = UnlimitedArmy:New({
+        Player = 8,
+        Area = 50,
+        Formation = UnlimitedArmy.Formations.Lines,
+        LeaderFormation  = FormationFunktion,
+        TransitAttackMove = true,
+    })
+    SpawnerTowerDefend = UnlimitedArmySpawnGenerator:New(armyDefendIronMine, {
+        Position = GetPosition("army3"),
+        ArmySize = 3 + _diff,
+        SpawnCounter = 30,
+        SpawnLeaders = 3 + _diff,
+        LeaderDesc = {
+            {LeaderType = Entities["PU_LeaderSword" .. math.min(4, math.max(1, _diff-1))], SoldierNum = 8, SpawnNum = 1, Looped = true, Experience = 0},
+			{LeaderType = Entities["PU_LeaderBow" .. math.min(4, math.max(1, _diff-1))], SoldierNum = 8, SpawnNum = 1, Looped = true, Experience = 0},
+        },
+		Generator = "tower2",
+    })
+	armyDefendIronMine:AddCommandMove(GetPosition("guardIronMine"), true)
+	armyDefendIronMine:AddCommandWaitForIdle(true)
+end
+
+function increaseEnemySoldiersTower()
+    if Counter.Tick2("increaseEnemySoldiersTower",600-getArchipelagoDifficultyMultiplier()*30) then
+		if IsDead("tower2") then
 			return true
-			
-			end
-
-		local troopDescription = {
-		
-			minNumberOfSoldiers	= 0,
-			maxNumberOfSoldiers = 4 + getArchipelagoDifficultyMultiplier()-2,
-			experiencePoints 	= LOW_EXPERIENCE,
-		}			
-
-		local leaderLevel = math.min(4, math.max(1, getArchipelagoDifficultyMultiplier()-1))
-		troopDescription.leaderType = Entities["PU_LeaderSword" .. leaderLevel]
-		EnlargeArmy(armyAttack1,troopDescription)				
-
-		return false
-		
 		end
-	
------------------------------------------------------------------------------------------------------------------------	
---
---	JOB: "ControlArmyAttack1"
---
------------------------------------------------------------------------------------------------------------------------	
-	-------------------------------------------------------------------------------------------------------------------
-	Condition_ControlArmyAttack1 = function()
-	-------------------------------------------------------------------------------------------------------------------
-	
-		return Counter.Tick2("ControlArmyAttack1",65)
-		
-		end
-		
-	-------------------------------------------------------------------------------------------------------------------
-	Action_ControlArmyAttack1 = function()
-	-------------------------------------------------------------------------------------------------------------------
-		
-		if IsDead(armyAttack1) then
-		
-			Retreat(armyAttack1)
-			
-			StartJob("SetupArmyAttack1")
-			
-			return true
-
-		else
-		
-			Advance(armyAttack1)
-			
-			end
-
-		return false
-		
-		end
-	
+        SpawnerTower.ArmySize = SpawnerTower.ArmySize +1
+        SpawnerTower.SpawnLeaders = SpawnerTower.SpawnLeaders +1
+    end
+end

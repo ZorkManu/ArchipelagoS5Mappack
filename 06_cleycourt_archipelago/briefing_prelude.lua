@@ -48,7 +48,7 @@ createBriefingPrelude = function()
 --		briefingPrelude[page].text				=	"Me self have to find an important artefact in this region.\nGood luck to you!"
 		briefingPrelude[page].title			= 	String.GenericKey("Leonardo")
 		briefingPrelude[page].text			=	String.Key("briefingPrelude3.text")
-		briefingPrelude[page].position 			= 	GetPosition("Dario")
+		briefingPrelude[page].position 			= 	GetPosition(getLeadingHero())
 
 	--	page 4
 
@@ -59,7 +59,7 @@ createBriefingPrelude = function()
 --		briefingPrelude[page].text				=	COLOR0.."1)"..COLOR1.."Talk to Barmecias Mayor.\n"
 		briefingPrelude[page].title			= 	String.GenericKey("MissionObjectives")
 		briefingPrelude[page].text			=	String.Key("briefingPrelude4.text")
-		briefingPrelude[page].position 			= 	GetPosition("Dario")	
+		briefingPrelude[page].position 			= 	GetPosition(getLeadingHero())	
 
 	--	go!
 	

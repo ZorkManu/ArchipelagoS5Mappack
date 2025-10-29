@@ -1,5 +1,5 @@
 
-MAIN_FORCE_RESPAWN_TIME = 5 * 60
+MAIN_FORCE_RESPAWN_TIME = 300
 
 createArmyMainForce = function()
 
@@ -16,7 +16,7 @@ createArmyMainForce = function()
 		armyMainForce.control.startTime	= 30 * 60
 		armyMainForce.control.retreat	= false
 		armyMainForce.control.respawn	= MAIN_FORCE_RESPAWN_TIME
-						
+
 		SetupArmy(armyMainForce)
 		
 	--	troop variants
@@ -72,21 +72,24 @@ createArmyMainForce = function()
 	Action_SetupArmyMainForce = function()
 	-------------------------------------------------------------------------------------------------------------------
 
-		armyMainForce.control.respawn = MAIN_FORCE_RESPAWN_TIME
+		armyMainForce.control.respawn = MAIN_FORCE_RESPAWN_TIME -( getArchipelagoDifficultyMultiplier()*10)
 
 		if HasFullStrength(armyMainForce) == false then
 
-			local troopDescription = {
+			for i = 1, getArchipelagoDifficultyMultiplier() do
+
+				local troopDescription = {
 			
-				minNumberOfSoldiers	= 0,
-				maxNumberOfSoldiers	= 9,
-				leaderType 			= mainForcePool[Logic.GetRandom(table.getn(mainForcePool)) +1],
-				experiencePoints 	= HIGH_EXPERIENCE,
-			}													
+					minNumberOfSoldiers	= 0,
+					maxNumberOfSoldiers	= 9,
+					leaderType 			= mainForcePool[Logic.GetRandom(table.getn(mainForcePool)) +1],
+					experiencePoints 	= HIGH_EXPERIENCE,
+				}													
 		
-			EnlargeArmy(armyMainForce,troopDescription)
+				EnlargeArmy(armyMainForce,troopDescription)
 
 			end
+		end
 			
 		return false
 		

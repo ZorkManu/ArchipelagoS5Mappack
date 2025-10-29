@@ -3,7 +3,7 @@ createQuestEstablishBase = function()
 
 	local Quest = {}
 	
-	Quest.EntityTypes =	{	{Entities.PB_University1, 	1},
+	Quest.EntityTypes =	{	
 							{Entities.PB_Barracks1, 	1}
 						}
 

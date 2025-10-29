@@ -1,50 +1,42 @@
 setupArmyAI1DefendIron = function()
 
-	ArmyAI1DefendIron						= {}
+	ArmyAI1DefendIron = UnlimitedArmy:New({
+		Player = 5,
+		Area = 6000,
+		Formation = UnlimitedArmy.Formations.Lines,
+		LeaderFormation  = FormationFunktion,
+		TransitAttackMove = true,
+	})
 
-	ArmyAI1DefendIron.player 				= 5
-	ArmyAI1DefendIron.id					= 2
-	ArmyAI1DefendIron.strength				= 4
-	ArmyAI1DefendIron.retreatStrength		= 2
-	ArmyAI1DefendIron.position				= GetPosition("AI1_Defend_Iron")
-	ArmyAI1DefendIron.baseDefenseRange		= 3000
-	ArmyAI1DefendIron.outerDefenseRange		= 3000
-	ArmyAI1DefendIron.rodeLength			= 3000
-	ArmyAI1DefendIron.beAgressive			= true
-	ArmyAI1DefendIron.AllowedTypes 			= {	UpgradeCategories.LeaderPoleArm, 
-											UpgradeCategories.LeaderSword, 
-											UpgradeCategories.LeaderBow, 
-											Entities.PV_Cannon2,
-											Entities.PV_Cannon2 }
+	local diff = getArchipelagoDifficultyMultiplier()
+	local cannonCategory = UpgradeCategories.Cannon1
+	if diff > 2 then
+		cannonCategory = UpgradeCategories.Cannon2
+		if diff > 3 then
+			cannonCategory = UpgradeCategories.Cannon3
+			if diff > 4 then
+				cannonCategory = UpgradeCategories.Cannon4
+			end
+		end
+	end
 
-	ArmyAI1DefendIron.AttackAllowed			= false
-
-
-	-- Setup army
-	SetupArmy(ArmyAI1DefendIron)
-	
-	-- Army generator
-	SetupAITroopGenerator("AI1DefendIron", ArmyAI1DefendIron)
-	
-	-- Control army
-	StartJob("ControlArmyAI1DefendIron")
+	ArmyAI1DefendIronRecruiter = UnlimitedArmyRecruiter:New(ArmyAI1DefendIron, {
+		Buildings = {
+			Logic.GetEntityIDByName("barracks"),
+			Logic.GetEntityIDByName("archery"),
+			Logic.GetEntityIDByName("foundry1"),
+			Logic.GetEntityIDByName("foundry2"),
+		},
+		ArmySize = 3 + diff,
+		UCats = {
+			{UCat = UpgradeCategories.LeaderSword, SpawnNum = 1, Looped = true},
+			{UCat = UpgradeCategories.LeaderBow, SpawnNum = 1, Looped = true},
+			{UCat = UpgradeCategories.LeaderPoleArm, SpawnNum = 1, Looped = true},
+			{UCat = cannonCategory, SpawnNum = 1, Looped = true},
+		},
+		ResCheat = true
+	})
+	ArmyAI1DefendIron:AddCommandMove(GetPosition("AI1_Defend_Iron"),true)
+	ArmyAI1DefendIron:AddCommandWaitForIdle(true)
+	ArmyAI1DefendIron:AddCommandDefend(GetPosition("AI1_Defend_Iron"), 6000, true)
 end
-
------------------------------------------------------------------------------------------------------------------------
---
---	JOB: "ControlArmyAI1DefendIron"
---
------------------------------------------------------------------------------------------------------------------------	
-	-------------------------------------------------------------------------------------------------------------------
-	Condition_ControlArmyAI1DefendIron = function()
-	-------------------------------------------------------------------------------------------------------------------
-		return Counter.Tick2("ControlArmyAI1DefendIron",10)
-	end
-		
-	-------------------------------------------------------------------------------------------------------------------
-	Action_ControlArmyAI1DefendIron = function()
-	-------------------------------------------------------------------------------------------------------------------
-		TickOffensiveAIController(ArmyAI1DefendIron)
-		return false		
-	end
------------------------------------------------------------------------------------------------------------------------

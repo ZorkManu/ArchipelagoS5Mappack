@@ -23,7 +23,7 @@ startQuestMoveToCastle = function()
 			maxNumberOfSoldiers	= 4,
 			minNumberOfSolderis	= 4,
 			experiencePoints 	= LOW_EXPERIENCE,
-		}			
+		}
 	
 		army = {}
 		
@@ -178,10 +178,12 @@ startQuestDefendCastle = function()
 
 	Report("start quest: defend castle")
 
+	initConstantAttacker()
+
 	--	briefing
 
 --		createBriefingDefendCastlePrelude()
-		--StartBinkVideo("VillageAttack1")
+		StartBinkVideo("VillageAttack1")
 		createBriefingDefendCastle()		-- starts at end: createQuestRescueLeonardo()
 
 	--	quest

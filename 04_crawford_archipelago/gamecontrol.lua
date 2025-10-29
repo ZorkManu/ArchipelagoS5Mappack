@@ -32,6 +32,7 @@ startQuestTower1 = function()
 		createQuestReachTownExit()
 		createQuestTower1()
 		-- createQuestDefeat()		-- will be started after intial briefings as player has no HQ at beginnning, yet
+		initConstantAttacker()
 
 
 	-- traders

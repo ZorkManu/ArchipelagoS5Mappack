@@ -39,19 +39,29 @@ createArmyAttackingBandits = function()
 			experiencePoints 	= LOW_EXPERIENCE,
 		}			
 
-		troopDescription.maxNumberOfSoldiers = armyAttackingBanditsA.control.units
+		troopDescription.maxNumberOfSoldiers = 8
 		
-		for i = 0, getArchipelagoDifficultyMultiplier() do
+		for i = 0, getArchipelagoDifficultyMultiplier() *2 do
 --			troopDescription.leaderType = Entities.PU_LeaderPoleArm1
 			troopDescription.leaderType = Entities.CU_BlackKnight_LeaderMace1
+			if getArchipelagoDifficultyMultiplier() == 2 then
+				troopDescription.leaderType = Entities.PU_LeaderSword2
+			elseif getArchipelagoDifficultyMultiplier() >= 3 then
+				troopDescription.leaderType = Entities.PU_LeaderSword3
+			end
 			EnlargeArmy(armyAttackingBanditsA,troopDescription)
 
 			troopDescription.leaderType = Entities.PU_LeaderBow1
+			if getArchipelagoDifficultyMultiplier() == 2 then
+				troopDescription.leaderType = Entities.PU_LeaderBow2
+			elseif getArchipelagoDifficultyMultiplier() >= 3 then
+				troopDescription.leaderType = Entities.PU_LeaderBow3
+			end
 			EnlargeArmy(armyAttackingBanditsA,troopDescription)
 		end
 	--TF
 		createBriefingRobber1Attack()	--TF: Only create briefings, do not start!
-		createBriefingRobber2Attack()				
+		createBriefingRobber2Attack()
 			
 	
 	--	start controlling job

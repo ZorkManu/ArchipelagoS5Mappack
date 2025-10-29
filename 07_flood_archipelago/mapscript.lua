@@ -62,7 +62,7 @@ function Mission_InitDiplomacy()
 	Logic.SetDiplomacyState( 1,	8, Diplomacy.Hostile	)
 	Logic.SetDiplomacyState( 8,	3, Diplomacy.Hostile	)
 
-	Logic.SetDiplomacyState( 1, 3, Diplomacy.Neutral	)
+	Logic.SetDiplomacyState( 1, 3, Diplomacy.Friendly	)
 	Logic.SetDiplomacyState( 1, 5, Diplomacy.Neutral	)
 	Logic.SetDiplomacyState( 8, 5, Diplomacy.Neutral	)
 	Logic.SetDiplomacyState( 8, 4, Diplomacy.Neutral	)
@@ -152,6 +152,10 @@ function Mission_FirstMapAction()
 		archipelago_init()
 		HeroSpawn()
 		enableTechsOutOfGDB()
+
+		setEnemyAis({
+			8,
+		})
 
 	-- Create NPCs
 	

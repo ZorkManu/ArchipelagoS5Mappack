@@ -16,7 +16,7 @@ createBriefingHelias = function()
 		page = page +1
 	
 		briefingHelias[page] 					= 	{}
-		briefingHelias[page].title				= 	String.GenericKey("HeliasNPC")
+		briefingHelias[page].title				= 	String.GenericKey("Helias")
 		briefingHelias[page].text				=	String.Key("briefingHelias[1].text")
 		briefingHelias[page].position 			= 	GetPosition("HeliasNPC")	
 		briefingHelias[page].dialogCamera 		= 	true
@@ -26,7 +26,7 @@ createBriefingHelias = function()
 		page = page +1
 	
 		briefingHelias[page] 					= 	{}
-		briefingHelias[page].title				= 	String.GenericKey("HeliasNPC")
+		briefingHelias[page].title				= 	String.GenericKey("Helias")
 		briefingHelias[page].text				=	String.Key("briefingHelias[2].text")
 		briefingHelias[page].position 			= 	GetPosition("HeliasNPC")	
 		briefingHelias[page].dialogCamera 		= 	true
@@ -36,7 +36,7 @@ createBriefingHelias = function()
 		page = page +1
 	
 		briefingHelias[page] 					= 	{}
-		briefingHelias[page].title				= 	String.GenericKey("HeliasNPC")
+		briefingHelias[page].title				= 	String.GenericKey("Helias")
 		briefingHelias[page].text				=	String.Key("briefingHelias[3].text")
 		briefingHelias[page].position 			= 	GetPosition("CountessCastle")	
 
@@ -46,7 +46,7 @@ createBriefingHelias = function()
 		page_briefingHeliasQuest = page
 
 		briefingHelias[page] 					= 	{}
-		briefingHelias[page].title				= 	String.GenericKey("HeliasNPC")
+		briefingHelias[page].title				= 	String.GenericKey("Helias")
 		briefingHelias[page].text				=	String.Key("briefingHelias[4].text")
 		briefingHelias[page].position 			= 	GetPosition("HeliasNPC")	
 		briefingHelias[page].dialogCamera 		= 	true

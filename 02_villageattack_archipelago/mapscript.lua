@@ -60,6 +60,7 @@
 		IncludeLocals("army_defendCamps")
 		IncludeLocals("army_siege")
 		IncludeLocals("army_erec")
+		IncludeLocals("constant_attacker_archipelago")
 	
 	
 		IncludeLocals("Map_LocalInit")		--TF_Include!
@@ -164,6 +165,11 @@ function Mission_FirstMapAction()
 	archipelago_init()
 	HeroSpawn()
 
+	setEnemyAis({
+		2,
+		3
+	})
+
 		--CreateChestOpener("Dario")
 		--CreateChestOpener("Erec")
 --		CreateChestOpener("Ari")
@@ -189,8 +195,6 @@ function Mission_FirstMapAction()
 		createPlayer4()
 		createPlayer5()
 
-		StartJob("isBarmeciaDead")
-
 	-- Set Music-Set
 		LocalMusic.UseSet = EUROPEMUSIC
 
@@ -199,15 +203,3 @@ function Mission_FirstMapAction()
 		startQuestMoveToCastle()
 	
 	end
-
-
-
-function isBarmeciaDead()
-
-	if IsDead("barmeciaCastle") or IsDead("BarmeciaMayor") then
-		Defeat()
-		return true
-	end
-
-	return false
-end

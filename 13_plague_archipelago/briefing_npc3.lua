@@ -37,7 +37,7 @@ createBriefingNpc3 = function()
 		briefingNpc3[page] 					= 	{}
 		briefingNpc3[page].title			= 	String.GenericKey("Erec")
 		briefingNpc3[page].text				=	String.Key("briefingNpc3[3].text")
-		briefingNpc3[page].position 		= 	GetPosition("Erec")	
+		briefingNpc3[page].position 		= 	GetPosition(getLeadingHero())
 		briefingNpc3[page].dialogCamera 	= 	true
 
 	--	page
@@ -47,7 +47,7 @@ createBriefingNpc3 = function()
 		briefingNpc3[page] 					= 	{}
 		briefingNpc3[page].title			= 	String.GenericKey("Dario")
 		briefingNpc3[page].text				=	String.Key("briefingNpc3[4].text")
-		briefingNpc3[page].position 		= 	GetPosition("Dario")	
+		briefingNpc3[page].position 		= 	GetPosition(getLeadingHero())
 		briefingNpc3[page].dialogCamera 	= 	true
 
 	-- xxx set new quest text

@@ -2,8 +2,8 @@
 <root>
  <NameKey>MapDescription/CM01_07_Flood_name</NameKey>
  <DescKey>MapDescription/CM01_07_Flood_desc</DescKey>
- <Name></Name>
- <Desc></Desc>
+ <Name>Der alte Rabe</Name>
+ <Desc>Letztendlich oblag es Johann, seinem Dorf die Stimme zu sein und die Hilfe des Königs zu suchen. Not trieb ihn durch die ganze Nacht, ließ ihn nach jedem Stolpern wieder aufstehen und schließlich jubeln, als er die großen Mauern der Stadt die Sterne am Himmel verdecken sah. @cr Doch schon viel früher ragten knorrige Finger aus dem Dunkel und brachten Ereignisse ins Rollen, die nun unwillkürlich ihren Lauf nehmen.</Desc>
  <SizeX>100</SizeX>
  <SizeY>100</SizeY>
  <MPFlag>false</MPFlag>
@@ -12,6 +12,6 @@
  <MiniMapTextureName>data\graphics\Textures\GUI\MapPics\externalmap</MiniMapTextureName>
  <Key>2</Key>
  <GUID>
-  <Data>1bad5038-2b92-46a9-99cf-56ed38ed29ab</Data>
+  <Data>1166bbd7-5825-42ee-9608-272a5b4747bb</Data>
  </GUID>
 </root>

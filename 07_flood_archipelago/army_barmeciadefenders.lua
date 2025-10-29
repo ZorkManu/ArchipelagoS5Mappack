@@ -1,71 +1,52 @@
 createArmyBarmeciaDefenders = function()
+		BarmeciaRecruiterArmy1 = UnlimitedArmy:New({
+			Player = 3,
+			Area = 3000,
+			Formation = UnlimitedArmy.Formations.Lines,
+			LeaderFormation  = FormationFunktion,
+			TransitAttackMove = true,
+		})
 
-	--	set up
+		BarmeciaRecruiter1 = UnlimitedArmyRecruiter:New(BarmeciaRecruiterArmy1, {
+			Buildings = {
+				Logic.GetEntityIDByName("barrack"),
+				Logic.GetEntityIDByName("archery")
+			},
+			ArmySize = 8,
+			UCats = {
+				{UCat = UpgradeCategories.LeaderSword, SpawnNum = 3, Looped = true},
+            	{UCat = UpgradeCategories.LeaderBow, SpawnNum = 4, Looped = true},
+            	{UCat = UpgradeCategories.LeaderPoleArm, SpawnNum = 1, Looped = true},
+			},
+			ResCheat = true
+		})
+		BarmeciaRecruiterArmy1:AddCommandMove(GetPosition("defenders1"),true)
+		BarmeciaRecruiterArmy1:AddCommandWaitForIdle(true)
+		BarmeciaRecruiterArmy1:AddCommandDefend(GetPosition("defenders1"), 3000, true)
 
-		armyBarmeciaDefenders1				= {}
-	
-		armyBarmeciaDefenders1.player 		= 3
-		armyBarmeciaDefenders1.id			= 1
-		armyBarmeciaDefenders1.strength		= 10
-		armyBarmeciaDefenders1.position		= GetPosition("defenders1")
-		armyBarmeciaDefenders1.rodeLength	= 4000
-		
-		SetupArmy(armyBarmeciaDefenders1)
+		BarmeciaRecruiterArmy2 = UnlimitedArmy:New({
+			Player = 3,
+			Area = 3000,
+			Formation = UnlimitedArmy.Formations.Chaotic,
+			LeaderFormation  = FormationFunktion,
+			TransitAttackMove = true,
+		})
 
-	--	create
-		
-		local troopDescription = {
-		
-			minNumberOfSoldiers	= 0,
-			maxNumberOfSoldiers = 4,
-			experiencePoints 	= MEDIUM_EXPERIENCE,
-		}			
-
-		troopDescription.leaderType = Entities.PU_LeaderPoleArm1
-		EnlargeArmy(armyBarmeciaDefenders1,troopDescription)				
-
-		troopDescription.leaderType = Entities.PU_LeaderBow1
-		EnlargeArmy(armyBarmeciaDefenders1,troopDescription)				
-		EnlargeArmy(armyBarmeciaDefenders1,troopDescription)				
-		EnlargeArmy(armyBarmeciaDefenders1,troopDescription)				
-
-		troopDescription.leaderType = Entities.PU_LeaderSword1
-		EnlargeArmy(armyBarmeciaDefenders1,troopDescription)				
-		EnlargeArmy(armyBarmeciaDefenders1,troopDescription)				
-		EnlargeArmy(armyBarmeciaDefenders1,troopDescription)				
-		EnlargeArmy(armyBarmeciaDefenders1,troopDescription)				
-
-	--	set up
-
-		armyBarmeciaDefenders2				= {}
-	
-		armyBarmeciaDefenders2.player 		= 3
-		armyBarmeciaDefenders2.id			= 2
-		armyBarmeciaDefenders2.strength		= 8
-		armyBarmeciaDefenders2.position		= GetPosition("defenders2")
-		armyBarmeciaDefenders2.rodeLength	= 2000
-		
-		SetupArmy(armyBarmeciaDefenders2)
-
-	--	create
-		
-		local troopDescription = {
-		
-			minNumberOfSoldiers	= 1,
-			maxNumberOfSoldiers = 4,
-			experiencePoints 	= MEDIUM_EXPERIENCE,
-		}			
-
-		troopDescription.leaderType = Entities.PU_LeaderSword1
-		EnlargeArmy(armyBarmeciaDefenders2,troopDescription)				
-		EnlargeArmy(armyBarmeciaDefenders2,troopDescription)				
-
-		troopDescription.leaderType = Entities.PU_LeaderBow1
-		EnlargeArmy(armyBarmeciaDefenders2,troopDescription)				
-		EnlargeArmy(armyBarmeciaDefenders2,troopDescription)				
-		EnlargeArmy(armyBarmeciaDefenders2,troopDescription)				
-		EnlargeArmy(armyBarmeciaDefenders2,troopDescription)				
-
+		BarmeciaRecruiter2 = UnlimitedArmyRecruiter:New(BarmeciaRecruiterArmy2, {
+			Buildings = {
+				Logic.GetEntityIDByName("barrack"),
+				Logic.GetEntityIDByName("archery")
+			},
+			ArmySize = 6,
+			UCats = {
+				{UCat = UpgradeCategories.LeaderSword, SpawnNum = 2, Looped = true},
+            	{UCat = UpgradeCategories.LeaderBow, SpawnNum = 4, Looped = true},
+			ResCheat = true
+			},
+		})
+		BarmeciaRecruiterArmy2:AddCommandMove(GetPosition("defenders2"),true)
+		BarmeciaRecruiterArmy2:AddCommandWaitForIdle(true)
+		BarmeciaRecruiterArmy2:AddCommandDefend(GetPosition("defenders2"), 3000, true)
 	end
 	
 	
