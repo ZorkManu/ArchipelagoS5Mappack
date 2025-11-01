@@ -2,7 +2,7 @@ setupArmyAI1Defense = function()
 
 	ArmyAI1Defense = UnlimitedArmy:New({
 		Player = 5,
-		Area = 6000,
+		Area = 4000,
 		Formation = UnlimitedArmy.Formations.Lines,
 		LeaderFormation  = FormationFunktion,
 		TransitAttackMove = true,
@@ -38,5 +38,5 @@ setupArmyAI1Defense = function()
 	})
 	ArmyAI1Defense:AddCommandMove(GetPosition("AI1_DefensePos"),true)
 	ArmyAI1Defense:AddCommandWaitForIdle(true)
-	ArmyAI1Defense:AddCommandDefend(GetPosition("AI1_DefensePos"), 6000, true)
+	ArmyAI1Defense:AddCommandDefend(GetPosition("AI1_DefensePos"), 4000, true)
 end

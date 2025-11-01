@@ -165,6 +165,28 @@ function Mission_FirstMapAction()
 
 	StartSimpleJob("isDeadWinterBase")
 
+	local enemyUpgrades = 0
+
+	local diff = getArchipelagoDifficultyMultiplier()
+
+	if diff > 3 then
+		enemyUpgrades = 1
+		if diff > 4 then
+			enemyUpgrades = 2
+		end
+	end
+
+	if enemyUpgrades > 0 then
+		for i = 1, enemyUpgrades do
+			Logic.UpgradeSettlerCategory(UpgradeCategories.LeaderBow, 2)
+			Logic.UpgradeSettlerCategory(UpgradeCategories.LeaderSword, 2)
+			Logic.UpgradeSettlerCategory(UpgradeCategories.LeaderPoleArm, 2)
+			Logic.UpgradeSettlerCategory(UpgradeCategories.SoldierBow, 2)
+			Logic.UpgradeSettlerCategory(UpgradeCategories.SoldierSword, 2)
+			Logic.UpgradeSettlerCategory(UpgradeCategories.SoldierPoleArm, 2)
+		end
+	end
+
 
 	--
 	

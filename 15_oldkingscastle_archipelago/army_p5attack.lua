@@ -1,41 +1,59 @@
 setupArmyP5Attack = function()
 
-	ArmyP5Attack					= {}
+	ArmyAttackP5= UnlimitedArmy:New({
+		Player = 5,
+		Area = 40000,
+		Formation = UnlimitedArmy.Formations.Lines,
+		LeaderFormation  = FormationFunktion,
+		TransitAttackMove = true,
+	})
 
-	ArmyP5Attack.player 			= 	5
-	ArmyP5Attack.id					= 	1
-	ArmyP5Attack.strength			= 	6
-	ArmyP5Attack.position			= 	GetPosition("AI2_ConcentratingArea")
-	ArmyP5Attack.rodeLength			= 	6000
-	                                	
-	ArmyP5Attack.AllowedTypes 		= 	{	UpgradeCategories.LeaderPoleArm, 
-											UpgradeCategories.LeaderSword, 
-											UpgradeCategories.LeaderBow,
-											UpgradeCategories.LeaderCavalry,
-											UpgradeCategories.LeaderHeavyCavalry,
-											Entities.PV_Cannon2,
-											Entities.PV_Cannon2 }
+	local diff = getArchipelagoDifficultyMultiplier()
+	local cannonCategory = UpgradeCategories.Cannon1
+	if diff > 2 then
+		cannonCategory = UpgradeCategories.Cannon2
+		if diff > 3 then
+			cannonCategory = UpgradeCategories.Cannon3
+			if diff > 4 then
+				cannonCategory = UpgradeCategories.Cannon4
+			end
+		end
+	end
 
-	-- Attack parameter
-	ArmyP5Attack.retreatStrength	= 	2
+	ArmyAttackP5Recruiter = UnlimitedArmyRecruiter:New(ArmyAttackP5, {
+		Buildings = {
+			Logic.GetEntityIDByName("barracksP5"),
+			Logic.GetEntityIDByName("Reward5"),
+			Logic.GetEntityIDByName("foundryP5"),
+			Logic.GetEntityIDByName("stableP5"),
+		},
+		ArmySize = 5 + diff,
+		UCats = {
+			{UCat = UpgradeCategories.LeaderSword, SpawnNum = 1, Looped = true},
+			{UCat = UpgradeCategories.LeaderBow, SpawnNum = 1, Looped = true},
+			{UCat = UpgradeCategories.LeaderPoleArm, SpawnNum = 1, Looped = true},
+			{UCat = UpgradeCategories.LeaderCavalry, SpawnNum = 1, Looped = true},
+			{UCat = UpgradeCategories.LeaderHeavyCavalry, SpawnNum = 1, Looped = true},
+			{UCat = cannonCategory, SpawnNum = 1, Looped = true},
+		},
+		ResCheat = true
+	})
+	ArmyAttackP5:AddCommandMove(GetPosition("AI2_ConcentratingArea"),true)
+	ArmyAttackP5:AddCommandWaitForIdle(true)
+	ArmyAttackP5:AddCommandAttackNearestTarget(40000, true)
 
-	ArmyP5Attack.baseDefenseRange	= 	6000
-	ArmyP5Attack.outerDefenseRange	= 	10000
-                                      	
-	ArmyP5Attack.Attack				= 	false
-	ArmyP5Attack.AttackPos			=	GetPosition("AI2_ConcentratingArea")
-	ArmyP5Attack.AttackAllowed		= 	false
-
-
-	-- Setup army
-	SetupArmy(ArmyP5Attack)
-	
-	-- Army generator
-	SetupAITroopGenerator("ArmyP5Attack", ArmyP5Attack)
-	
-	-- Control army
-	StartJob("ControlArmyP5Attack")
+	StartSimpleJob("increaseEnemySoldiersArmyP5")
 end
+
+function increaseEnemySoldiersArmyP5()
+    if Counter.Tick2("increaseEnemySoldiersArmyP5",1200-getArchipelagoDifficultyMultiplier()*30) then
+		if IsDead("barracksP5") and IsDead("Reward5") and IsDead("stableP5") and IsDead("foundryP5") then
+			return true
+		end
+        ArmyAttackP5Recruiter.ArmySize = ArmyAttackP5Recruiter.ArmySize +1
+    end
+end
+
 
 StartArmyP5Attack = function()
 

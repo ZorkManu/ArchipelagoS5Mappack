@@ -39,7 +39,7 @@ EastWayOpen = function()
 	-- south way not opened
 	if destroySouthBlockingDone == nil then
 		
-		StartAttackPos2()
+		--StartAttackPos2()
 	end
 
 end

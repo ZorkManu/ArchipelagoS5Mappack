@@ -16,6 +16,8 @@ setupArmyP2Intruder = function()
 		
 		-- Setup army
 		SetupArmy(ArmyP2Intruder[i])
+
+		for j = 1, math.ceil(getArchipelagoDifficultyMultiplier()/2) do 
 	
 		local troopDescription 			=	{	maxNumberOfSoldiers	= 	4,
 												minNumberOfSoldiers	= 	0,
@@ -23,18 +25,20 @@ setupArmyP2Intruder = function()
 												leaderType			=	Entities.PU_LeaderPoleArm1
 											}			
 	
-		EnlargeArmy(ArmyP2Intruder[i], troopDescription)
-
-		if i == 4 then
 			EnlargeArmy(ArmyP2Intruder[i], troopDescription)
-		end
+						
+			if i == 4 and j == 1 then
+				EnlargeArmy(ArmyP2Intruder[i], troopDescription)
+			end
 					
-		troopDescription.leaderType = Entities.PU_LeaderSword1
+			troopDescription.leaderType = Entities.PU_LeaderSword1
 	
-		EnlargeArmy(ArmyP2Intruder[i], troopDescription)
-
-		if i == 4 then
 			EnlargeArmy(ArmyP2Intruder[i], troopDescription)
+
+			if i == 4 and j == 1 then
+				EnlargeArmy(ArmyP2Intruder[i], troopDescription)
+			end
+
 		end
 	
 	end

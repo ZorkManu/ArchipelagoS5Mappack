@@ -13,22 +13,24 @@ setupArmyP2FirstAttack = function()
 
 	local troopDescription = {
 	
-		maxNumberOfSoldiers	= 4,
+		maxNumberOfSoldiers	= 8,
 		minNumberOfSolderis	= 0,
 		experiencePoints 	= LOW_EXPERIENCE,
-		leaderType			= Entities.PU_LeaderPoleArm1
+		leaderType			= Entities["PU_LeaderPoleArm1"]
 	}			
 
+	for i = 1, math.ceil(getArchipelagoDifficultyMultiplier()/2) do
 	EnlargeArmy(ArmyP2FirstAttack, troopDescription)
 	EnlargeArmy(ArmyP2FirstAttack, troopDescription)
 
-	troopDescription.leaderType = Entities.PU_LeaderSword1
+	troopDescription.leaderType = Entities["PU_LeaderSword1"]
 
 	EnlargeArmy(ArmyP2FirstAttack, troopDescription)
 	EnlargeArmy(ArmyP2FirstAttack, troopDescription)
 
-	troopDescription.leaderType = Entities.PV_Cannon2
+	troopDescription.leaderType = Entities["PV_Cannon2"]
 	troopDescription.maxNumberOfSoldiers = 0
 
 	EnlargeArmy(ArmyP2FirstAttack, troopDescription)
+	end
 end

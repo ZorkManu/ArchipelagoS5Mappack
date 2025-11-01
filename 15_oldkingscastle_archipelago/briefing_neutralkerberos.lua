@@ -47,7 +47,7 @@ createBriefingNeutralKerberos = function()
 		briefingNeutralKerberos[page] 				= 	{}
 		briefingNeutralKerberos[page].title			= 	String.GenericKey("Helias")
 		briefingNeutralKerberos[page].text			=	String.Key("briefingNeutralKerberos[2].text")
-		briefingNeutralKerberos[page].position 		= 	GetPosition("Helias")
+		briefingNeutralKerberos[page].position 		= 	GetPosition(getLeadingHero())
 		briefingNeutralKerberos[page].explore		=	1000
 		briefingNeutralKerberos[page].dialogCamera 	= 	true
 
@@ -68,7 +68,7 @@ createBriefingNeutralKerberos = function()
 		briefingNeutralKerberos[page] 				= 	{}
 		briefingNeutralKerberos[page].title			= 	String.GenericKey("Helias")
 		briefingNeutralKerberos[page].text			=	String.Key("briefingNeutralKerberos[4].text")
-		briefingNeutralKerberos[page].position 		= 	GetPosition("Helias")
+		briefingNeutralKerberos[page].position 		= 	GetPosition(getLeadingHero())
 		briefingNeutralKerberos[page].dialogCamera 	= 	true
 
 	--	page 5
@@ -107,7 +107,7 @@ createBriefingNeutralKerberos = function()
 		briefingNeutralKerberos[page] 				= 	{}
 		briefingNeutralKerberos[page].title			= 	String.GenericKey("Helias")
 		briefingNeutralKerberos[page].text			=	String.Key("briefingNeutralKerberos[7].text")
-		briefingNeutralKerberos[page].position 		= 	GetPosition("Helias")
+		briefingNeutralKerberos[page].position 		= 	GetPosition(getLeadingHero())
 		briefingNeutralKerberos[page].dialogCamera 	= 	true
 
 	--	page 8
@@ -117,7 +117,7 @@ createBriefingNeutralKerberos = function()
 		briefingNeutralKerberos[page] 				= 	{}
 		briefingNeutralKerberos[page].title			= 	String.GenericKey("MissionObjectives")
 		briefingNeutralKerberos[page].text			=	String.Key("briefingNeutralKerberos[8].text")
-		briefingNeutralKerberos[page].position 		= 	GetPosition("Dario")
+		briefingNeutralKerberos[page].position 		= 	GetPosition(getLeadingHero())
 		briefingNeutralKerberos[page].dialogCamera 	= 	true
 
 	--	page 
@@ -150,10 +150,10 @@ end
 SetHeroInPosition = function(_hero)
 
 	local ID = GetID(_hero)
-	local Health = Logic.GetEntityMaxHealth(ID)
+	--local Health = Logic.GetEntityMaxHealth(ID)
     
-	SetHealth(_hero, Health)
-	SetPosition(_hero, GetPosition("GiveUp".._hero), _hero)
-	LookAt(GetID(_hero), GetID("KerberosMoveTo"))		
+	--SetHealth(_hero, Health)
+	--SetPosition(_hero, GetPosition("GiveUp".._hero), _hero)
+	--LookAt(GetID(_hero), GetID("KerberosMoveTo"))		
 
 end

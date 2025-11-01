@@ -148,9 +148,9 @@ function Mission_FirstMapAction()
 
 	local diff =  getArchipelagoDifficultyMultiplier()
 
-	if diff > 2 then
+	if diff > 3 then
 		enemyUpgrades = 1
-		if diff >= 4 then
+		if diff > 4 then
 			enemyUpgrades = 2
 		end
 	end

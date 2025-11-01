@@ -53,25 +53,10 @@ StartArmyP2VillageAttack = function()
 	TimeLine.Enter("Allow P2VA Cannons", TimeLine.Seconds + 10*60, "AllowArmyP2VillageAttackCannons")
 	TimeLine.Enter("Allow P2VA Cavalry", TimeLine.Seconds + 40*60, "AllowArmyP2VillageAttackCavalry")
 
-	TimeLine.Enter("Increase Size P2VA to 5/1", TimeLine.Seconds + 20*60, "IncreaseArmyP2VillageAttackSize")
-	TimeLine.Enter("Increase Size P2VA to 6/2", TimeLine.Seconds + 30*60, "IncreaseArmyP2VillageAttackSize")
-	TimeLine.Enter("Increase Size P2VA to 7/2", TimeLine.Seconds + 40*60, "IncreaseArmyP2VillageAttackSize")
-	TimeLine.Enter("Increase Size P2VA to 8/2", TimeLine.Seconds + 80*60, "IncreaseArmyP2VillageAttackSize")
-
-	TimeLine.Enter("Upgrade P2pole to lvl 2", TimeLine.Seconds + 25*60, "UpgradeP2PoleArm")
-	TimeLine.Enter("Upgrade P2pole to lvl 3", TimeLine.Seconds + 45*60, "UpgradeP2PoleArm")
-	TimeLine.Enter("Upgrade P2pole to lvl 4", TimeLine.Seconds + 65*60, "UpgradeP2PoleArm")
-	
-	TimeLine.Enter("Upgrade P2sword to lvl 2", TimeLine.Seconds + 25*60, "UpgradeP2Sword")
-	TimeLine.Enter("Upgrade P2sword to lvl 3", TimeLine.Seconds + 45*60, "UpgradeP2Sword")
-	TimeLine.Enter("Upgrade P2sword to lvl 4", TimeLine.Seconds + 65*60, "UpgradeP2Sword")
-
-	TimeLine.Enter("Upgrade P2bow to lvl 2", TimeLine.Seconds + 25*60, "UpgradeP2Bow")
-	TimeLine.Enter("Upgrade P2bow to lvl 3", TimeLine.Seconds + 45*60, "UpgradeP2Bow")
-	TimeLine.Enter("Upgrade P2bow to lvl 4", TimeLine.Seconds + 65*60, "UpgradeP2Bow")
-
-	TimeLine.Enter("Upgrade P2cavalry to lvl 2", TimeLine.Seconds + 60*60, "UpgradeP2Cavalry")
-	TimeLine.Enter("Upgrade P2heavycavalry to lvl 2", TimeLine.Seconds + 65*60, "UpgradeP2HeavyCavalry")
+	TimeLine.Enter("Increase Size P2VA to 5/1", TimeLine.Seconds + 20*60 - getArchipelagoDifficultyMultiplier()*60, "IncreaseArmyP2VillageAttackSize")
+	TimeLine.Enter("Increase Size P2VA to 6/2", TimeLine.Seconds + 30*60 - getArchipelagoDifficultyMultiplier()*60, "IncreaseArmyP2VillageAttackSize")
+	TimeLine.Enter("Increase Size P2VA to 7/2", TimeLine.Seconds + 40*60 - getArchipelagoDifficultyMultiplier()*60, "IncreaseArmyP2VillageAttackSize")
+	TimeLine.Enter("Increase Size P2VA to 8/2", TimeLine.Seconds + 80*60 - getArchipelagoDifficultyMultiplier()*60, "IncreaseArmyP2VillageAttackSize")
 
 	local i
 	for i=2,10 do

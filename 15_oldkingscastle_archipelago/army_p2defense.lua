@@ -1,66 +1,97 @@
 setupArmyP2Defense = function()
 
-	ArmyP2Defense1		= {}
-	ArmyP2Defense2		= {}
-	ArmyP2Defense3		= {}
+	local diff = getArchipelagoDifficultyMultiplier()
+	local cannonCategory = UpgradeCategories.Cannon1
+	if diff > 2 then
+		cannonCategory = UpgradeCategories.Cannon2
+		if diff > 3 then
+			cannonCategory = UpgradeCategories.Cannon3
+			if diff > 4 then
+				cannonCategory = UpgradeCategories.Cannon4
+			end
+		end
+	end
 
-	initArmyP2Defense(ArmyP2Defense1, "ArmyP2Defense1", 1, "AI1_ConcentratingArea1", 5000, true)
-	initArmyP2Defense(ArmyP2Defense2, "ArmyP2Defense2", 2, "AI1_ConcentratingArea2", 6000, true)
-	initArmyP2Defense(ArmyP2Defense3, "ArmyP2Defense3", 3, "P2HQDefensePos", 2000, false)
+	ArmyAIP2Defense1 = UnlimitedArmy:New({
+		Player = 2,
+		Area = 5000,
+		Formation = UnlimitedArmy.Formations.Lines,
+		LeaderFormation  = FormationFunktion,
+		TransitAttackMove = true,
+	})
 
-	StartJob("ControlArmyP2Defense")
+	ArmyAIP2DefenseRecruiter1 = UnlimitedArmyRecruiter:New(ArmyAIP2Defense1, {
+		Buildings = {
+			Logic.GetEntityIDByName("Reward2"),
+			Logic.GetEntityIDByName("archeryP2"),
+			Logic.GetEntityIDByName("foundryP2"),
+		},
+		ArmySize = 3 + diff,
+		UCats = {
+			{UCat = UpgradeCategories.LeaderSword, SpawnNum = 1, Looped = true},
+			{UCat = UpgradeCategories.LeaderBow, SpawnNum = 1, Looped = true},
+			{UCat = UpgradeCategories.LeaderPoleArm, SpawnNum = 1, Looped = true},
+			{UCat = cannonCategory, SpawnNum = 1, Looped = true},
+		},
+		ResCheat = true
+	})
+	ArmyAIP2Defense1:AddCommandMove(GetPosition("AI1_ConcentratingArea1"),true)
+	ArmyAIP2Defense1:AddCommandWaitForIdle(true)
+	ArmyAIP2Defense1:AddCommandDefend(GetPosition("AI1_ConcentratingArea1"), 5000, true)
+
+	ArmyAIP2Defense2 = UnlimitedArmy:New({
+		Player = 2,
+		Area = 6000,
+		Formation = UnlimitedArmy.Formations.Lines,
+		LeaderFormation  = FormationFunktion,
+		TransitAttackMove = true,
+	})
+
+	ArmyAIP2DefenseRecruiter2 = UnlimitedArmyRecruiter:New(ArmyAIP2Defense2, {
+		Buildings = {
+			Logic.GetEntityIDByName("Reward2"),
+			Logic.GetEntityIDByName("archeryP2"),
+			Logic.GetEntityIDByName("foundryP2"),
+		},
+		ArmySize = 3 + diff,
+		UCats = {
+			{UCat = UpgradeCategories.LeaderSword, SpawnNum = 1, Looped = true},
+			{UCat = UpgradeCategories.LeaderBow, SpawnNum = 1, Looped = true},
+			{UCat = UpgradeCategories.LeaderPoleArm, SpawnNum = 1, Looped = true},
+			{UCat = cannonCategory, SpawnNum = 1, Looped = true},
+		},
+		ResCheat = true
+	})
+	ArmyAIP2Defense2:AddCommandMove(GetPosition("AI1_ConcentratingArea2"),true)
+	ArmyAIP2Defense2:AddCommandWaitForIdle(true)
+	ArmyAIP2Defense2:AddCommandDefend(GetPosition("AI1_ConcentratingArea2"), 6000, true)
+
+	
+	ArmyAIP2Defense3 = UnlimitedArmy:New({
+		Player = 2,
+		Area = 2000,
+		Formation = UnlimitedArmy.Formations.Lines,
+		LeaderFormation  = FormationFunktion,
+		TransitAttackMove = true,
+	})
+
+	ArmyAIP2DefenseRecruiter3 = UnlimitedArmyRecruiter:New(ArmyAIP2Defense3, {
+		Buildings = {
+			Logic.GetEntityIDByName("Reward2"),
+			Logic.GetEntityIDByName("archeryP2"),
+			Logic.GetEntityIDByName("foundryP2"),
+		},
+		ArmySize = 3 + diff,
+		UCats = {
+			{UCat = UpgradeCategories.LeaderSword, SpawnNum = 1, Looped = true},
+			{UCat = UpgradeCategories.LeaderBow, SpawnNum = 1, Looped = true},
+			{UCat = UpgradeCategories.LeaderPoleArm, SpawnNum = 1, Looped = true},
+			{UCat = cannonCategory, SpawnNum = 1, Looped = true},
+		},
+		ResCheat = true
+	})
+	ArmyAIP2Defense3:AddCommandMove(GetPosition("P2HQDefensePos"),true)
+	ArmyAIP2Defense3:AddCommandWaitForIdle(true)
+	ArmyAIP2Defense3:AddCommandDefend(GetPosition("P2HQDefensePos"), 2000, true)
 
 end
-
-initArmyP2Defense = function(_army, _name, _index, _pos, _defenseRange, _pulse)
-
-	_army.player 			= 	2
-	_army.id				= 	_index
-	_army.strength			= 	4
-	_army.position			= 	GetPosition(_pos)
-	_army.rodeLength		= 	_defenseRange
-	
-	_army.AllowedTypes 		= 	{ UpgradeCategories.LeaderPoleArm, 
-									UpgradeCategories.LeaderSword, 
-									UpgradeCategories.LeaderBow, 
-									Entities.PV_Cannon2 }
-	_army.ignoreAttack		=	true
-
-	-- Attack parameter
-	_army.retreatStrength	= 	0
-
-	_army.baseDefenseRange	= 	_defenseRange
-	_army.outerDefenseRange	= 	_defenseRange
-                                      	
-	_army.Attack			= 	false
-	_army.AttackAllowed		= 	false
-
-	_army.pulse				=	_pulse
-
-	-- Setup army
-	SetupArmy(_army)
-	
-	-- Army generator
-	SetupAITroopGenerator(_name, _army)
-end
-
------------------------------------------------------------------------------------------------------------------------
---
---	JOB: "ControlArmyLeftFortress"
---
------------------------------------------------------------------------------------------------------------------------	
-	-------------------------------------------------------------------------------------------------------------------
-	Condition_ControlArmyP2Defense = function()
-	-------------------------------------------------------------------------------------------------------------------
-		return Counter.Tick2("ControlArmyP2Defense",10)
-	end
-		
-	-------------------------------------------------------------------------------------------------------------------
-	Action_ControlArmyP2Defense = function()
-	-------------------------------------------------------------------------------------------------------------------
-		TickOffensiveAIController(ArmyP2Defense1)
-		TickOffensiveAIController(ArmyP2Defense2)
-		TickOffensiveAIController(ArmyP2Defense3)
-		return false		
-	end
------------------------------------------------------------------------------------------------------------------------

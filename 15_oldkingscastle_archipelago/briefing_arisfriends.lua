@@ -25,7 +25,7 @@ createBriefingAriFriends = function()
 		briefingAriFriends[page] 				= 	{}
 		briefingAriFriends[page].title			= 	String.GenericKey("Dario")
 		briefingAriFriends[page].text			=	String.Key("briefingAriFriends[2].text")
-		briefingAriFriends[page].position 		= 	GetPosition("Dario")
+		briefingAriFriends[page].position 		= 	GetPosition(getLeadingHero())
 --		briefingAriFriends[page].dialogCamera 	= 	true
 
 

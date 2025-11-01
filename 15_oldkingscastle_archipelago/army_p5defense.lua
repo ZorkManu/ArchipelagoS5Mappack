@@ -1,38 +1,44 @@
 setupArmyP5Defense = function()
 
-	ArmyP5Defense					= {}
+	ArmyAttackP5= UnlimitedArmy:New({
+		Player = 5,
+		Area = 4000,
+		Formation = UnlimitedArmy.Formations.Lines,
+		LeaderFormation  = FormationFunktion,
+		TransitAttackMove = true,
+	})
 
-	ArmyP5Defense.player 			= 	5
-	ArmyP5Defense.id				= 	2
-	ArmyP5Defense.strength			= 	8
-	ArmyP5Defense.position			= 	GetPosition("AI2_ConcentratingArea")
-	ArmyP5Defense.rodeLength		= 	4500
-	                                	
-	ArmyP5Defense.AllowedTypes 		= 	{	UpgradeCategories.LeaderPoleArm, 
-											UpgradeCategories.LeaderSword, 
-											UpgradeCategories.LeaderBow, 
-											Entities.PV_Cannon2 }
-	ArmyP5Defense.ignoreAttack		=	true
+	local diff = getArchipelagoDifficultyMultiplier()
+	local cannonCategory = UpgradeCategories.Cannon1
+	if diff > 2 then
+		cannonCategory = UpgradeCategories.Cannon2
+		if diff > 3 then
+			cannonCategory = UpgradeCategories.Cannon3
+			if diff > 4 then
+				cannonCategory = UpgradeCategories.Cannon4
+			end
+		end
+	end
 
-	-- Attack parameter
-	ArmyP5Defense.retreatStrength	= 	0
-
-	ArmyP5Defense.baseDefenseRange	= 	4500
-	ArmyP5Defense.outerDefenseRange	= 	7000
-                                      	
-	ArmyP5Defense.Attack			= 	false
-	ArmyP5Defense.AttackAllowed		= 	false
-
-	ArmyP5Defense.pulse				=	true
-
-	-- Setup army
-	SetupArmy(ArmyP5Defense)
-	
-	-- Army generator
-	SetupAITroopGenerator("ArmyP5Defense", ArmyP5Defense)
-	
-	-- Control army
-	StartJob("ControlArmyP5Defense")
+	ArmyAttackP5Recruiter = UnlimitedArmyRecruiter:New(ArmyAttackP5, {
+		Buildings = {
+			Logic.GetEntityIDByName("barracksP5"),
+			Logic.GetEntityIDByName("Reward5"),
+			Logic.GetEntityIDByName("foundryP5"),
+			Logic.GetEntityIDByName("stableP5"),
+		},
+		ArmySize = 7 + diff,
+		UCats = {
+			{UCat = UpgradeCategories.LeaderSword, SpawnNum = 1, Looped = true},
+			{UCat = UpgradeCategories.LeaderBow, SpawnNum = 1, Looped = true},
+			{UCat = UpgradeCategories.LeaderPoleArm, SpawnNum = 1, Looped = true},
+			{UCat = cannonCategory, SpawnNum = 1, Looped = true},
+		},
+		ResCheat = true
+	})
+	ArmyAttackP5:AddCommandMove(GetPosition("AI2_ConcentratingArea"),true)
+	ArmyAttackP5:AddCommandWaitForIdle(true)
+	ArmyAttackP5:AddCommandDefend(GetPosition("AI2_ConcentratingArea"), 5000)
 end
 
 

@@ -65,47 +65,47 @@ function initBuyableHeroes()
 			XGUIEng.DisableButton( XGUIEng.GetCurrentWidgetID(), 1 )
 			return
 		end
-		if(GDB.GetString("pilgrim") ~= "1" and _HeroEntityType == Entities.PU_Hero2) then
+		if(tonumber(GDB.GetString("pilgrim")) < 1 and _HeroEntityType == Entities.PU_Hero2) then
 			XGUIEng.DisableButton( XGUIEng.GetCurrentWidgetID(), 1 )
 			return
 		end
-		if(GDB.GetString("salim") ~= "1" and _HeroEntityType == Entities.PU_Hero3) then
+		if(tonumber(GDB.GetString("salim")) < 1 and _HeroEntityType == Entities.PU_Hero3) then
 			XGUIEng.DisableButton( XGUIEng.GetCurrentWidgetID(), 1 )
 			return
 		end
-		if(GDB.GetString("erec") ~= "1" and _HeroEntityType == Entities.PU_Hero4) then
+		if(tonumber(GDB.GetString("erec")) < 1 and _HeroEntityType == Entities.PU_Hero4) then
 			XGUIEng.DisableButton( XGUIEng.GetCurrentWidgetID(), 1 )
 			return
 		end
-		if(GDB.GetString("ari") ~= "1" and _HeroEntityType == Entities.PU_Hero5) then
+		if(tonumber(GDB.GetString("ari")) < 1 and _HeroEntityType == Entities.PU_Hero5) then
 			XGUIEng.DisableButton( XGUIEng.GetCurrentWidgetID(), 1 )
 			return
 		end
-		if(GDB.GetString("helias") ~= "1" and _HeroEntityType == Entities.PU_Hero6) then
+		if(tonumber(GDB.GetString("helias")) < 1 and _HeroEntityType == Entities.PU_Hero6) then
 			XGUIEng.DisableButton( XGUIEng.GetCurrentWidgetID(), 1 )
 			return
 		end
-		if(GDB.GetString("kerberos") ~= "1" and _HeroEntityType == Entities.CU_BlackKnight) then
+		if(tonumber(GDB.GetString("kerberos")) < 1 and _HeroEntityType == Entities.CU_BlackKnight) then
 			XGUIEng.DisableButton( XGUIEng.GetCurrentWidgetID(), 1 )
 			return
 		end
-		if(GDB.GetString("mary") ~= "1" and _HeroEntityType == Entities.CU_Mary_de_Mortfichet) then
+		if(tonumber(GDB.GetString("mary")) < 1 and _HeroEntityType == Entities.CU_Mary_de_Mortfichet) then
 			XGUIEng.DisableButton( XGUIEng.GetCurrentWidgetID(), 1 )
 			return
 		end
-		if(GDB.GetString("varg") ~= "1" and _HeroEntityType == Entities.CU_Barbarian_Hero) then
+		if(tonumber(GDB.GetString("varg")) < 1 and _HeroEntityType == Entities.CU_Barbarian_Hero) then
 			XGUIEng.DisableButton( XGUIEng.GetCurrentWidgetID(), 1 )
 			return
 		end
-		if(GDB.GetString("drake") ~= "1" and _HeroEntityType == Entities.PU_Hero10) then
+		if(tonumber(GDB.GetString("drake")) < 1 and _HeroEntityType == Entities.PU_Hero10) then
 			XGUIEng.DisableButton( XGUIEng.GetCurrentWidgetID(), 1 )
 			return
 		end
-		if(GDB.GetString("yuki") ~= "1" and _HeroEntityType == Entities.PU_Hero11) then
+		if(tonumber(GDB.GetString("yuki")) < 1 and _HeroEntityType == Entities.PU_Hero11) then
 			XGUIEng.DisableButton( XGUIEng.GetCurrentWidgetID(), 1 )
 			return
 		end
-		if(GDB.GetString("kala") ~= "1" and _HeroEntityType == Entities.CU_Evil_Queen) then
+		if(tonumber(GDB.GetString("kala")) < 1 and _HeroEntityType == Entities.CU_Evil_Queen) then
 			XGUIEng.DisableButton( XGUIEng.GetCurrentWidgetID(), 1 )
 			return
 		end

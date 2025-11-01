@@ -15,7 +15,7 @@ createBriefingPrelude = function()
 		briefingPrelude[page] 					= 	{}
 		briefingPrelude[page].title				= 	String.GenericKey("Dario")
 		briefingPrelude[page].text				=	String.Key("briefingPrelude[1].text")
-		briefingPrelude[page].position 			= 	GetPosition("Dario")	
+		briefingPrelude[page].position 			= 	GetPosition(getLeadingHero())	
 		briefingPrelude[page].dialogCamera 		= 	true
 
 	--	page 2
@@ -88,7 +88,7 @@ createBriefingPrelude = function()
 		briefingPrelude[page] 					= 	{}
 		briefingPrelude[page].title				= 	String.GenericKey("MissionObjectives")
 		briefingPrelude[page].text				=	String.Key("briefingPrelude[6].text")
-		briefingPrelude[page].position 			= 	GetPosition("Dario")
+		briefingPrelude[page].position 			= 	GetPosition(getLeadingHero())
 		briefingPrelude[page].dialogCamera 		= 	true
 
 	--	go!
