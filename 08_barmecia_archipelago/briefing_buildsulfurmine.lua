@@ -42,7 +42,7 @@ createBriefingBuildSulfurMine = function()
 		BriefingBuildSulfurMine[page] 					= 	{}
 		BriefingBuildSulfurMine[page].title			= 	String.GenericKey("MissionObjectives")
 		BriefingBuildSulfurMine[page].text			=	String.Key("BriefingBuildSulfurMine[task].text")
-		BriefingBuildSulfurMine[page].position 		= 	GetPosition("Dario")	
+		BriefingBuildSulfurMine[page].position 		= 	GetPosition(getLeadingHero())	
 		BriefingBuildSulfurMine[page].dialogCamera 	= 	true
 	
 

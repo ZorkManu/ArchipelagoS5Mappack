@@ -571,11 +571,11 @@ function enableTechsOutOfGDB()
 			end
 		end
 	end
-	if (tonumber(GDB.GetString("progressive_rifle_armor")) or 0) >= 1 then
+	if (tonumber(GDB.GetString("progressive_fleece_armor")) or 0) >= 1 then
 		if Logic.IsTechnologyResearched(1, Technologies.T_FleeceArmor) == 0 then
 			AllowTechnology(Technologies.T_FleeceArmor)
 		end
-		if (tonumber(GDB.GetString("progressive_rifle_armor")) or 0) >= 2 then
+		if (tonumber(GDB.GetString("progressive_fleece_armor")) or 0) >= 2 then
 			if Logic.IsTechnologyResearched(1, Technologies.T_FleeceLinedLeatherArmor) == 0 then
 				AllowTechnology(Technologies.T_FleeceLinedLeatherArmor)
 			end

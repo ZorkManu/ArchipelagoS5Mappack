@@ -120,6 +120,7 @@ function Mission_FirstMapAction()
 	IncludeLocals("army_KI2_defense")
 	IncludeLocals("army_DefenseLeftMines")
 	IncludeLocals("army_DefenseRightMines")
+	IncludeLocals("attacker_tourte")
 	
         IncludeLocals("Cutscene_Control")
 
@@ -136,6 +137,7 @@ function Mission_FirstMapAction()
 
 	StartSimpleJob("isDeadCampLeft")
 	StartSimpleJob("isDeadCampRight")
+	StartSimpleJob("startAI2Attack")
 
 	
 --TK
@@ -154,6 +156,13 @@ function Mission_FirstMapAction()
 	
 	-- Start prelude
 	start1stQuest()
+end
+
+function startAI2Attack()
+	if Counter.Tick2("startAI2Attack", 500) then
+		setupArmyAI2Attack()
+		return true
+	end
 end
 
 function isDeadCampLeft()

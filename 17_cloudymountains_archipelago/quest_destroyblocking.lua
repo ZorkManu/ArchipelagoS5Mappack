@@ -27,7 +27,7 @@ SouthWayOpen = function()
 
 	if destroySouthBlockingDone == nil then
 		
-		StartAttackPos1()
+		--StartAttackPos1()
 		destroySouthBlockingDone = true
 	end
 end

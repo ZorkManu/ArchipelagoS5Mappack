@@ -60109,5 +60109,35 @@
    <AmbientSoundType></AmbientSoundType>
    <Scale>1.000000e+000</Scale>
   </Entity>
+  <Entity classname="EGL::CGLEEntityCreator" classid="0x0753286d">
+   <Type>XD_ScriptEntity</Type>
+   <Position>
+    <X>9.192660e+003</X>
+    <Y>3.691393e+004</Y>
+   </Position>
+   <Orientation>0.000000e+000</Orientation>
+   <Flags>0</Flags>
+   <PlayerID>1</PlayerID>
+   <Health>-1</Health>
+   <Name>ki2movepoint1</Name>
+   <ScriptCommandLine></ScriptCommandLine>
+   <AmbientSoundType></AmbientSoundType>
+   <Scale>1.000000e+000</Scale>
+  </Entity>
+  <Entity classname="EGL::CGLEEntityCreator" classid="0x0753286d">
+   <Type>XD_ScriptEntity</Type>
+   <Position>
+    <X>9.443970e+003</X>
+    <Y>3.068853e+004</Y>
+   </Position>
+   <Orientation>0.000000e+000</Orientation>
+   <Flags>0</Flags>
+   <PlayerID>1</PlayerID>
+   <Health>-1</Health>
+   <Name>ki2movepoint2</Name>
+   <ScriptCommandLine></ScriptCommandLine>
+   <AmbientSoundType></AmbientSoundType>
+   <Scale>1.000000e+000</Scale>
+  </Entity>
  </Entities>
 </root>

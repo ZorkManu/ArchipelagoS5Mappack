@@ -53,6 +53,7 @@ setupArmyRaiding = function()
 
 
 	-- Setup army
+	local timediff = getArchipelagoDifficultyMultiplier()-1*120
 	SetupArmy(ArmyRaiding2)
 
 
@@ -63,31 +64,31 @@ setupArmyRaiding = function()
 
 
 	-- change army settings at time:
-	TimeLine.Enter("Allow bow", 			TimeLine.Seconds +  20*60, "AllowP5Bow")
-	TimeLine.Enter("Upgrade bow to 2",		TimeLine.Seconds +  26*60, "UpgradeP5Bow")
-	TimeLine.Enter("Upgrade bow to 3",		TimeLine.Seconds +  36*60, "UpgradeP5Bow")
-	TimeLine.Enter("Upgrade bow to 4",		TimeLine.Seconds +  50*60, "UpgradeP5Bow")
+	TimeLine.Enter("Allow bow", 			TimeLine.Seconds +  20*60 - timediff, "AllowP5Bow")
+	TimeLine.Enter("Upgrade bow to 2",		TimeLine.Seconds +  26*60 - timediff, "UpgradeP5Bow")
+	TimeLine.Enter("Upgrade bow to 3",		TimeLine.Seconds +  36*60 - timediff, "UpgradeP5Bow")
+	TimeLine.Enter("Upgrade bow to 4",		TimeLine.Seconds +  50*60 - timediff, "UpgradeP5Bow")
                                                                 
-	TimeLine.Enter("Upgrade pike to 2",		TimeLine.Seconds +  10*60, "UpgradeP5Pike")
-	TimeLine.Enter("Upgrade pike to 3",		TimeLine.Seconds +  32*60, "UpgradeP5Pike")
-	TimeLine.Enter("Upgrade pike to 4",		TimeLine.Seconds +  41*60, "UpgradeP5Pike")
+	TimeLine.Enter("Upgrade pike to 2",		TimeLine.Seconds +  10*60 - timediff, "UpgradeP5Pike")
+	TimeLine.Enter("Upgrade pike to 3",		TimeLine.Seconds +  32*60 - timediff, "UpgradeP5Pike")
+	TimeLine.Enter("Upgrade pike to 4",		TimeLine.Seconds +  41*60 - timediff, "UpgradeP5Pike")
                                                                 
-	TimeLine.Enter("Upgrade sword to 2",	TimeLine.Seconds +  21*60, "UpgradeP5Sword")
-	TimeLine.Enter("Upgrade sword to 3",	TimeLine.Seconds +  35*60, "UpgradeP5Sword")
-	TimeLine.Enter("Upgrade sword to 4",	TimeLine.Seconds +  45*60, "UpgradeP5Sword")
+	TimeLine.Enter("Upgrade sword to 2",	TimeLine.Seconds +  21*60 - timediff, "UpgradeP5Sword")
+	TimeLine.Enter("Upgrade sword to 3",	TimeLine.Seconds +  35*60 - timediff, "UpgradeP5Sword")
+	TimeLine.Enter("Upgrade sword to 4",	TimeLine.Seconds +  45*60 - timediff, "UpgradeP5Sword")
                                                                 
-	TimeLine.Enter("Cannon 2", 				TimeLine.Seconds +  22*60, "AllowP5Cannon2")
-	TimeLine.Enter("Cannon 4", 				TimeLine.Seconds +  52*60, "AllowP5Cannon4")
+	TimeLine.Enter("Cannon 2", 				TimeLine.Seconds +  22*60 - timediff, "AllowP5Cannon2")
+	TimeLine.Enter("Cannon 4", 				TimeLine.Seconds +  52*60 - timediff, "AllowP5Cannon4")
 
-	TimeLine.Enter("Cavalery", 				TimeLine.Seconds +  40*60, "AllowP5Cavalery")
-	TimeLine.Enter("Upgrade cavalery",		TimeLine.Seconds +  55*60, "UpgradeP5Cavalery")
-	TimeLine.Enter("Upgrade hvy cavalery",	TimeLine.Seconds +  65*60, "UpgradeP5HeavyCavalery")
+	TimeLine.Enter("Cavalery", 				TimeLine.Seconds +  40*60 - timediff, "AllowP5Cavalery")
+	TimeLine.Enter("Upgrade cavalery",		TimeLine.Seconds +  55*60 - timediff, "UpgradeP5Cavalery")
+	TimeLine.Enter("Upgrade hvy cavalery",	TimeLine.Seconds +  65*60 - timediff, "UpgradeP5HeavyCavalery")
 
 
-	TimeLine.Enter("Increase Size to 3/1", 	TimeLine.Seconds +  16*60, "IncreaseP5AttackSize")
-	TimeLine.Enter("Increase Size to 4/1", 	TimeLine.Seconds +  37*60, "IncreaseP5AttackSize")
-	TimeLine.Enter("Increase Size to 5/1", 	TimeLine.Seconds +  51*60, "IncreaseP5AttackSize")
-	TimeLine.Enter("Increase Size to 6/2", 	TimeLine.Seconds +  80*60, "IncreaseP5AttackSize")
+	TimeLine.Enter("Increase Size to 3/1", 	TimeLine.Seconds +  16*60 - timediff, "IncreaseP5AttackSize")
+	TimeLine.Enter("Increase Size to 4/1", 	TimeLine.Seconds +  37*60 - timediff, "IncreaseP5AttackSize")
+	TimeLine.Enter("Increase Size to 5/1", 	TimeLine.Seconds +  51*60 - timediff, "IncreaseP5AttackSize")
+	TimeLine.Enter("Increase Size to 6/2", 	TimeLine.Seconds +  80*60 - timediff, "IncreaseP5AttackSize")
 	
 	-- Army generator
 	SetupAITroopGenerator("Raiding2", ArmyRaiding2)

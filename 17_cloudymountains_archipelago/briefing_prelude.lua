@@ -106,7 +106,7 @@ createBriefingPrelude = function()
 --		briefingPrelude[page].text				=	COLOR0.."1)"..COLOR1.."Worker Population must reach more than 100.\n"
 		briefingPrelude[page].title				=	String.GenericKey("MissionObjectives")
 		briefingPrelude[page].text				=	String.Key("briefingPrelude7.text")
-		briefingPrelude[page].position 			= 	GetPosition("Dario")
+		briefingPrelude[page].position 			= 	GetPosition(getLeadingHero())
 
 	--	go!
 	

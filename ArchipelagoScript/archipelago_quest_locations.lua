@@ -129,7 +129,7 @@ function getMissingLocations()
     end
     
     -- Barmecia
-    if Framework.GetCurrentMapName() == "8_BARMECIA_ARCHIPELAGO" then
+    if Framework.GetCurrentMapName() == "08_BARMECIA_ARCHIPELAGO" then
         if GDB.GetString("barmecia_market_burning") ~= "1" then
             missingLocationsString = missingLocationsString .. "barmecia_market_burning @cr "
         end

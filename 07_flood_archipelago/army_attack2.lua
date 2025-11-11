@@ -7,6 +7,7 @@ end
 function waitForSpawnerCave()
 	if Counter.Tick2("waitForSpawnerCave",300) then
 		initCaveSpawner(getArchipelagoDifficultyMultiplier())
+		return true
 	end
 end
 

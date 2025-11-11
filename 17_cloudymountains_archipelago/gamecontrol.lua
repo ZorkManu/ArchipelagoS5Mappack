@@ -267,6 +267,8 @@ end6thQuest = function()
 	
 	StartCutscene("MissionComplete")
 
+	checkLocation("cloudy_mountains_victory")
+
 
 	Victory()
 end

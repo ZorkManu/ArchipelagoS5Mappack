@@ -61,7 +61,7 @@ createBriefingMarket2Built = function()
 				BriefingMarket2Built[page] 					= 	{}
 				BriefingMarket2Built[page].title			= 	String.GenericKey("MissionObjectives")
 				BriefingMarket2Built[page].text				=	String.Key("BriefingMainquest[task].text")
-				BriefingMarket2Built[page].position 		= 	GetPosition("Dario")	
+				BriefingMarket2Built[page].position 		= 	GetPosition(getLeadingHero())	
 				BriefingMarket2Built[page].dialogCamera 	= 	true
 			
 

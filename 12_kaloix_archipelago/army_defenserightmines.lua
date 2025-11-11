@@ -4,7 +4,7 @@ setupArmyDefenseRightMines = function()
 
 	armyDefenseRightMines.player 			= 7
 	armyDefenseRightMines.id				= 2
-	armyDefenseRightMines.strength			= 2
+	armyDefenseRightMines.strength			= 2 + math.min(6, getArchipelagoDifficultyMultiplier())
 	armyDefenseRightMines.position			= GetPosition("DefenceRightMinesPos")
 	armyDefenseRightMines.rodeLength			= 2000
 	armyDefenseRightMines.spawnTypes 		= { { Entities.PU_LeaderPoleArm1, 4},

@@ -42,7 +42,7 @@ createBriefingMarket1Rescue = function()
 		BriefingMarket1Rescue[page] 					= 	{}
 		BriefingMarket1Rescue[page].title			= 	String.GenericKey("MissionObjectives")
 		BriefingMarket1Rescue[page].text			=	String.Key("BriefingMarket1Rescue[task].text")
-		BriefingMarket1Rescue[page].position 		= 	GetPosition("Dario")	
+		BriefingMarket1Rescue[page].position 		= 	GetPosition(getLeadingHero())	
 		BriefingMarket1Rescue[page].dialogCamera 	= 	true
 	
 

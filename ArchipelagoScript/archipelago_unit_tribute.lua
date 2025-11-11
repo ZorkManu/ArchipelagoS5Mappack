@@ -22,13 +22,6 @@ end
 
 swordTributePaid = function()
 	CreateMilitaryGroup(1, Entities.PU_LeaderSword1, 4, GetPosition("HeroSpawn"))
-	StartSimpleJob("startSwordTribute")
-end
-
-startSwordTribute = function()
-	if Counter.Tick2("startSwordTribute",2) then
-		swordTribute()
-	end
 end
 
 spearTribute = function()
@@ -55,13 +48,6 @@ end
 
 spearTributePaid = function()
 	CreateMilitaryGroup(1, Entities.PU_LeaderPoleArm1, 4, GetPosition("HeroSpawn"))
-	StartSimpleJob("startSpearTribute")
-end
-
-startSpearTribute = function()
-	if Counter.Tick2("startSpearTribute",2) then
-		spearTribute()
-	end
 end
 
 bowTribute = function()
@@ -88,13 +74,6 @@ end
 
 bowTributePaid = function()
 	CreateMilitaryGroup(1, Entities.PU_LeaderBow1, 4, GetPosition("HeroSpawn"))
-	StartSimpleJob("startBowTribute")
-end
-
-startBowTribute = function()
-	if Counter.Tick2("startBowTribute",2) then
-		bowTribute()
-	end
 end
 
 heavyCavTribute = function()
@@ -121,13 +100,6 @@ end
 
 heavyCavTributePaid = function()
 	CreateMilitaryGroup(1, Entities.PU_LeaderHeavyCavalry1, 4, GetPosition("HeroSpawn"))
-	StartSimpleJob("startHeavyCavTribute")
-end
-
-startHeavyCavTribute = function()
-	if Counter.Tick2("startHeavyCavTribute",2) then
-		heavyCavTribute()
-	end
 end
 
 lightCavTribute = function()
@@ -157,13 +129,6 @@ end
 
 lightCavTributePaid = function()
 	CreateMilitaryGroup(1, Entities.PU_LeaderCavlary1, 4, GetPosition("HeroSpawn"))
-	StartSimpleJob("startLightCavTribute")
-end
-
-startLightCavTribute = function()
-	if Counter.Tick2("startLightCavTribute",2) then
-		lightCavTribute()
-	end
 end
 
 cannonTribute = function()
@@ -193,13 +158,6 @@ end
 
 cannonTributePaid = function()
 	CreateMilitaryGroup(1, Entities.PV_Cannon1, 4, GetPosition("HeroSpawn"))
-	StartSimpleJob("startCannonTribute")
-end
-
-startCannonTribute = function()
-	if Counter.Tick2("startCannonTribute",2) then
-		cannonTribute()
-	end
 end
 
 thiefTribute = function()
@@ -226,13 +184,6 @@ end
 
 thiefTributePaid = function()
 	CreateMilitaryGroup(1, Entities.PU_Thief, 0, GetPosition("HeroSpawn"))
-	StartSimpleJob("startThiefTribute")
-end
-
-startThiefTribute = function()
-	if Counter.Tick2("startThiefTribute",2) then
-		thiefTribute()
-	end
 end
 
 scoutTribute = function()
@@ -259,13 +210,6 @@ end
 
 scoutTributePaid = function()
 	CreateMilitaryGroup(1, Entities.PU_Scout, 0, GetPosition("HeroSpawn"))
-	StartSimpleJob("startScoutTribute")
-end
-
-startScoutTribute = function()
-	if Counter.Tick2("startScoutTribute",2) then
-		scoutTribute()
-	end
 end
 
 rifleTribute = function()
@@ -292,11 +236,4 @@ end
 
 rifleTributePaid = function()
 	CreateMilitaryGroup(1, Entities.PU_LeaderRifle1, 0, GetPosition("HeroSpawn"))
-	StartSimpleJob("startRifleTribute")
-end
-
-startRifleTribute = function()
-	if Counter.Tick2("startRifleTribute",2) then
-		rifleTribute()
-	end
 end

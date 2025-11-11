@@ -57,11 +57,11 @@ FoundAriFriend = function(_Quest)
 
 		if AriFriendsTalkCount == 1 then
 			checkLocation("old_kings_castle_bandits_front")
-			if AriFriendsTalkCount == 2 then
-				checkLocation("old_kings_castle_bandits_rock")
-				if AriFriendsTalkCount == 3 then
-					checkLocation("old_kings_castle_bandits_castle")
-				end
-			end
+		end
+		if AriFriendsTalkCount == 2 then
+			checkLocation("old_kings_castle_bandits_rock")
+		end
+		if AriFriendsTalkCount == 3 then
+			checkLocation("old_kings_castle_bandits_castle")
 		end
 end
