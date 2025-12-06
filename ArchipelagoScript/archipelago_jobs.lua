@@ -15,6 +15,8 @@ function archipelago_init()
 	Script.Load("maps\\user\\ArchipelagoScript\\archipelago_quest_locations.lua")
 	Script.Load("maps\\user\\EMS\\tools\\s5CommunityLib\\lib\\MemLib\\MemLib.lua")
 	Script.Load("maps\\user\\EMS\\tools\\s5CommunityLib\\packer\\devLoad.lua")
+	Script.Load("maps\\user\\EMS\\tools\\s5CommunityLib\\fixes\\CityGuardFix.lua")
+	Script.Load("CSinglePlayer\\ingame\\CCMod.lua")
 	mcbPacker.Paths = {
 		{"data/maps/user/ems/tools/",".lua"},
 		{"data/maps/user/ems/tools/",".luac"},
