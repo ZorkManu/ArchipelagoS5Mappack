@@ -11,10 +11,13 @@ SAVEFILENAME = "__archipelago-"
 CURRENTFILENAME = "__archipelago-"
 
 function archipelago_init()
+	Script.Load("CSinglePlayer\\ModLoader_SP.lua")
 	Script.Load("maps\\user\\ArchipelagoScript\\archipelago_unit_tribute.lua")
 	Script.Load("maps\\user\\ArchipelagoScript\\archipelago_quest_locations.lua")
-	Script.Load("maps\\user\\EMS\\tools\\s5CommunityLib\\lib\\MemLib\\MemLib.lua")
+	--Script.Load("maps\\user\\EMS\\tools\\s5CommunityLib\\lib\\MemLib\\MemLib.lua")
 	Script.Load("maps\\user\\EMS\\tools\\s5CommunityLib\\packer\\devLoad.lua")
+	Script.Load("maps\\user\\EMS\\tools\\s5CommunityLib\\fixes\\CityGuardFix.lua")
+	Script.Load("CSinglePlayer\\ingame\\CCMod.lua")
 	mcbPacker.Paths = {
 		{"data/maps/user/ems/tools/",".lua"},
 		{"data/maps/user/ems/tools/",".luac"},
@@ -22,9 +25,9 @@ function archipelago_init()
 	Script.Load("maps\\user\\EMS\\tools\\s5CommunityLib\\lib\\UnlimitedArmy.lua")
 	Script.Load("maps\\user\\EMS\\tools\\s5CommunityLib\\lib\\UnlimitedArmyRecruiter.lua")
 	Script.Load("maps\\user\\EMS\\tools\\s5CommunityLib\\lib\\UnlimitedArmySpawnGenerator.lua")
-	MemLib.Load("BuildingType")
-	MemLib.Load("EntityIterator")
-	MemLib.Load("Settler")
+	--MemLib.Load("BuildingType")
+	--MemLib.Load("EntityIterator")
+	--MemLib.Load("Settler")
 	TriggerFix.AllScriptsLoaded()
 	reloadGDBItemsSave()
 	--forbid all techs
@@ -35,7 +38,7 @@ function archipelago_init()
 	setPlayerColor()
 	setGameSpeed()
 	--StartSimpleJob("checkMotivation")
-	initAttractionLimit()
+	--initAttractionLimit()
 	StartSimpleJob("checkForNewItems")
 	StartSimpleJob("aiTechnologies")
 	initQuestLog()
@@ -61,7 +64,7 @@ function initBuyableHeroes()
 	end
 	BuyHeroWindow_Update_BuyHero_Backup = BuyHeroWindow_Update_BuyHero
 	function BuyHeroWindow_Update_BuyHero(_HeroEntityType)
-		if((tonumber(GDB.GetString("progressive_dario")) < 1 or GDB.GetString("progressive_dario") == "") and _HeroEntityType == Entities.PU_Hero1c) then
+		if(((tonumber(GDB.GetString("progressive_dario")) < 1 or GDB.GetString("progressive_dario") == "") and _HeroEntityType == Entities.PU_Hero1c) or IsDead("Dario") == false) then
 			XGUIEng.DisableButton( XGUIEng.GetCurrentWidgetID(), 1 )
 			return
 		end
@@ -747,7 +750,7 @@ function checkForNewItems()
 		end
 		Message("Someone send You @color:255,255,0 ".. item[1] .. " @color:255,255,255 !")
 		enableTechsOutOfGDB()
-		initAttractionLimit()
+		--initAttractionLimit()
 	end
 end
 

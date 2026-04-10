@@ -173,7 +173,7 @@ function isDeadOutpost1()
 end
 
 function isDeadOutpostPrison()
-	if GlobalMissionScripting.IsEntityDestroyed("KI2_Outpost") then
+	if GlobalMissionScripting.IsEntityDestroyed("KI3_HQ") then
 		checkLocation("wasteland_destroy_outpost_prison")
 		return true
 	end

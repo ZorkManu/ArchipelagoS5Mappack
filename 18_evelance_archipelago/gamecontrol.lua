@@ -328,8 +328,6 @@ end5thQuest = function()
 
 	Report("end 5th quest")
 
-	checkLocation("evelance_sulfur_mines")
-
 	start6thQuest()
 
 end

@@ -83,6 +83,9 @@ function initMainCampSpawner(_diff)
 end
 
 function initTowerSpawner(_diff)
+    if IsDead("attackSpawner") then
+        return
+    end
     local spawnArmyTower = UnlimitedArmy:New({
         Player = 7,
         Area = 25000,

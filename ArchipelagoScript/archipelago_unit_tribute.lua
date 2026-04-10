@@ -235,5 +235,5 @@ rifleTribute = function()
 end
 
 rifleTributePaid = function()
-	CreateMilitaryGroup(1, Entities.PU_LeaderRifle1, 0, GetPosition("HeroSpawn"))
+	CreateMilitaryGroup(1, Entities.PU_LeaderRifle1, 4, GetPosition("HeroSpawn"))
 end

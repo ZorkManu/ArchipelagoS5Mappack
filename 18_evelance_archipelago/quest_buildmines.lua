@@ -91,6 +91,8 @@ MineBuild = function(_Near)
 
 		SpokenMessage(String.MainKey.."Message_MinesBuilt")
 
+		checkLocation("evelance_sulfur_mines")
+
 		-- enable Leonardo-Marker to talk to him again.
 
 		ResolveBriefing(BuildMinesQuest)

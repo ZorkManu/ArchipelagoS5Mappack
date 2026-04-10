@@ -151,8 +151,8 @@ function initSpawnerRightVillage(_diff)
         SpawnLeaders = 12,
         Leader = {
             {LeaderType = Entities.CU_BlackKnight_LeaderMace1, SoldierNum = 4, SpawnNum = 1, Looped = true, Experience = 0},
-            {LeaderType = Entiities.CU_BanditLeaderSword1, SoldierNum = 4, SpawnNum = 1, Looped = true, Experience = 0},
-            {LeaderType = Entiities.CU_BanditLeaderBow1, SoldierNum = 4, SpawnNum = 1, Looped = true, Experience = 0},
+            {LeaderType = Entities.CU_BanditLeaderSword1, SoldierNum = 4, SpawnNum = 1, Looped = true, Experience = 0},
+            {LeaderType = Entities.CU_BanditLeaderBow1, SoldierNum = 4, SpawnNum = 1, Looped = true, Experience = 0},
         }
     })
     spawnArmyRightVillage:AddCommandMove(GetPosition("VictoryErecMove"),true)
@@ -202,11 +202,11 @@ function upgradesSpawner()
     if (IsDead("tower1") and IsDead("tower2")) then
         SpawnerLeftVillage.ArmySize = SpawnerLeftVillage.ArmySize + 2
         SpawnerLeftVillage.SpawnLeaders = SpawnerLeftVillage.SpawnLeaders + 2
-        if getArchipelagoDifficultyMultiplier() >= 5 then
+        if getArchipelagoDifficultyMultiplier() >= 5 and SpawnerRightVillage ~= nil then
             SpawnerRightVillage.ArmySize = SpawnerRightVillage.ArmySize + 4
             SpawnerRightVillage.SpawnLeaders = SpawnerRightVillage.SpawnLeaders + 4
         end
-        if getArchipelagoDifficultyMultiplier() >= 6 then
+        if getArchipelagoDifficultyMultiplier() >= 6 and SpawnerMountains ~= nil then
             SpawnerMountains.ArmySize = SpawnerMountains.ArmySize + 2
             SpawnerMountains.SpawnLeaders = SpawnerMountains.SpawnLeaders + 2
         end
