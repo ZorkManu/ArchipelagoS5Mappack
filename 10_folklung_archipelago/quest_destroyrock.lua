@@ -46,6 +46,7 @@ function Action_IsRock2Destroyed()
 	Report("Rock2 destroyed!")
 	createBriefingRock2Destroyed()
 	start5thQuest()
+	checkLocation("folklung_rock_destroyed")
 	return 1
 end
 --------------------------------------------------------------------------------------------

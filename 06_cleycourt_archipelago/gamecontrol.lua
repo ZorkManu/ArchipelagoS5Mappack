@@ -558,6 +558,8 @@ GameCallback_NPCInteraction = function(_heroId,_npcId)
 	
 	elseif _npcId == GetID("CleycourtGuard1") then	
 
+		
+		checkLocation("cleycourt_cleycourt_view")
 		-- already done
 		if talkedToCleycourtGuard1 == nil then
 
@@ -569,6 +571,7 @@ GameCallback_NPCInteraction = function(_heroId,_npcId)
 		
 	elseif _npcId == GetID("BarmeciaGuard1") then	
 
+		checkLocation("cleycourt_barmecia_view")
 		-- already done
 		if talkedToBarmeciaGuard1 == nil then
 

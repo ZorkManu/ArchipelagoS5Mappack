@@ -238,8 +238,3 @@ function CreateDummyBriefing(_Callback, _Position)
 		StartBriefing(DummyBriefing )
 	
 end
-
-
-
-
-

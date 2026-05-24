@@ -469,7 +469,7 @@ GameCallback_NPCInteraction = function(_heroId,_npcId)
 	-- Hero is talking to build up npc
 	if _npcId == GetID("Major") then
 		
-		if _heroId == GetID("Dario") then			-- only talks to Dario
+		--if _heroId == GetID("Dario") then			-- only talks to Dario
 
 			-- already done
 			if talkedToMajor == nil then
@@ -478,18 +478,18 @@ GameCallback_NPCInteraction = function(_heroId,_npcId)
 			
 				talkedToMajor = true
 			end
-		else
+		--else
 		
-			SpokenMessage(String.MainKey.."Message_DarioMustTalk")
+			--SpokenMessage(String.MainKey.."Message_DarioMustTalk")
 			
-		end
+		--end
 		
 
 		
 	elseif _npcId == GetID("leonardo") then	
 
 		-- First time at Leonardo
-		if _heroId == GetID("Dario") then			-- only talks to Dario
+		--if _heroId == GetID("Dario") then			-- only talks to Dario
 
 			if talkedToLeonardo == nil then			-- player talkes to Leonardo first time
 		
@@ -527,11 +527,11 @@ GameCallback_NPCInteraction = function(_heroId,_npcId)
 	
 			DisableNpcMarker("leonardo")
 			
-		else
+		--else
 		
-			SpokenMessage(String.MainKey.."Message_DarioMustTalk")
+			--SpokenMessage(String.MainKey.."Message_DarioMustTalk")
 			
-		end
+		--end
 		
 	elseif _npcId == GetID("Princess") then	
 

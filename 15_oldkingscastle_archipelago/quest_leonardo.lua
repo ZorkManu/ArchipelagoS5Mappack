@@ -56,6 +56,8 @@ end
 
 TributeLeonardoPaid1 = function()
 	
+	checkLocation("old_kings_castle_leonardo_tribute")
+
 	local Job1 = {}
 	
 	Job1.Tribute = uniqueTributeCounter

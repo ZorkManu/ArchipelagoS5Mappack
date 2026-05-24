@@ -51,7 +51,7 @@ executeQuestPilgrim = function()
 
 	NPC_PilgrimTributePaid = 1
 
-	if GetPlayer("Pilgrim") == GetHumanPlayer() then
+	if GetPlayer("PilgrimNPC") == GetHumanPlayer() then
 	
 		createBriefingNpcPilgrim_Failed()
 	
@@ -64,7 +64,7 @@ executeQuestPilgrim = function()
 		local IDPosX, IDPosY, IDPosZ = 	Tools.GetPosition("npcPilgrim")
 		Camera.ScrollSetLookAt(IDPosX, IDPosY)	
 
-	Move("npcPilgrim","Pilgrim")
+	Move("npcPilgrim","PilgrimNPC")
 
 	-- does not work :-(
 	-- StartJob("QuestRunToPilgrim")
@@ -101,13 +101,13 @@ end
 			
 		end
 
-		if IsNear("npcPilgrim","Pilgrim",600) then
+		if IsNear("npcPilgrim","PilgrimNPC",600) then
 		
 			return true
 			
 		end
 			
-		if GetPlayer("Pilgrim") == GetHumanPlayer() then
+		if GetPlayer("PilgrimNPC") == GetHumanPlayer() then
 		
 			return true
 			
@@ -136,15 +136,15 @@ end
 			return true
 		end
 
-		if GetPlayer("Pilgrim") == GetHumanPlayer() then
+		if GetPlayer("PilgrimNPC") == GetHumanPlayer() then
 			return true
 		end
 		
-		if IsNear("npcPilgrim","Pilgrim",600) ~= true then
-			Move("npcPilgrim","Pilgrim")
+		if IsNear("npcPilgrim","PilgrimNPC",600) ~= true then
+			Move("npcPilgrim","PilgrimNPC")
 		end
 		
-		return IsNear("npcPilgrim","Pilgrim",500)
+		return IsNear("npcPilgrim","PilgrimNPC",500)
 		
 	end
 

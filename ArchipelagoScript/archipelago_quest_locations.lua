@@ -18,11 +18,14 @@ function getMissingLocations()
         if GDB.GetString("thalgrund_build_barracks") ~= "1" then
             missingLocationsString = missingLocationsString .. "thalgrund_build_barracks @cr "
         end
-        if GDB.GetString("thalgrund_tower") ~= "1" then
-            missingLocationsString = missingLocationsString .. "thalgrund_tower @cr "
+        if GDB.GetString("thalgrund_leonardo") ~= "1" then
+            missingLocationsString = missingLocationsString .. "thalgrund_leonardo @cr "
         end
         if GDB.GetString("thalgrund_ring_quest") ~= "1" then
             missingLocationsString = missingLocationsString .. "thalgrund_ring_quest @cr "
+        end
+        if GDB.GetString("thalgrund_river_yacht_villager") ~= "1" then
+            missingLocationsString = missingLocationsString .. "thalgrund_river_yacht_villager @cr "
         end
         if GDB.GetString("thalgrund_victory") ~= "1" then
             missingLocationsString = missingLocationsString .. "thalgrund_victory @cr "
@@ -79,6 +82,9 @@ function getMissingLocations()
         if GDB.GetString("crawford_help_leonardo") ~= "1" then
             missingLocationsString = missingLocationsString .. "crawford_help_leonardo @cr "
         end
+        if GDB.GetString("crawford_pay_dovbar") ~= "1" then
+            missingLocationsString = missingLocationsString .. "crawford_pay_dovbar @cr "
+        end
         return missingLocationsString
     end
     
@@ -98,6 +104,12 @@ function getMissingLocations()
         end
         if GDB.GetString("cleycourt_victory") ~= "1" then
             missingLocationsString = missingLocationsString .. "cleycourt_victory @cr "
+        end
+        if GDB.GetString("cleycourt_cleycourt_view") ~= "1" then
+            missingLocationsString = missingLocationsString .. "cleycourt_cleycourt_view @cr "
+        end
+        if GDB.GetString("cleycourt_barmecia_view") ~= "1" then
+            missingLocationsString = missingLocationsString .. "cleycourt_barmecia_view @cr "
         end
         return missingLocationsString
     end
@@ -164,6 +176,9 @@ function getMissingLocations()
         end
         if GDB.GetString("folklung_leader") ~= "1" then
             missingLocationsString = missingLocationsString .. "folklung_leader @cr "
+        end
+        if GDB.GetString("folklung_rock_destroyed") ~= "1" then
+            missingLocationsString = missingLocationsString .. "folklung_rock_destroyed @cr "
         end
         if GDB.GetString("folklung_victory") ~= "1" then
             missingLocationsString = missingLocationsString .. "folklung_victory @cr "
@@ -286,6 +301,9 @@ function getMissingLocations()
         end
         if GDB.GetString("old_kings_castle_castle_tribute") ~= "1" then
             missingLocationsString = missingLocationsString .. "old_kings_castle_castle_tribute @cr "
+        end
+        if GDB.GetString("old_kings_castle_leonardo_tribute") ~= "1" then
+            missingLocationsString = missingLocationsString .. "old_kings_castle_leonardo_tribute @cr "
         end
         if GDB.GetString("old_kings_castle_winter_base") ~= "1" then
             missingLocationsString = missingLocationsString .. "old_kings_castle_winter_base @cr "
@@ -416,4 +434,64 @@ function getMissingLocations()
     end
     
     return missingLocationsString
+end
+
+function getRequiredItems()
+    local requiredItems = ""
+
+    --Thalgrund
+    if Framework.GetCurrentMapName() == "01_THALGRUND_ARCHIPELAGO" then
+        requiredItems = "Mercenaries x 1 @cr "
+    end
+
+    --Crawford
+    if Framework.GetCurrentMapName() == "04_CRAWFORD_ARCHIPELAGO" then
+        requiredItems = "Construction x 2 @cr "
+    end
+
+    --Flood
+    if Framework.GetCurrentMapName() == "07_FLOOD_ARCHIPELAGO" then
+        requiredItems = "Ari @cr "
+    end
+
+    -- Barmecia
+    if Framework.GetCurrentMapName() == "08_BARMECIA_ARCHIPELAGO" then
+        requiredItems = "Literacy x 2 @cr "
+    end
+
+    -- Folklung
+    if Framework.GetCurrentMapName() == "10_FOLKLUNG_ARCHIPELAGO" then
+        requiredItems = "Pilgrim @cr "
+    end
+
+    -- Norfolk
+    if Framework.GetCurrentMapName() == "11_NORFOLK_ARCHIPELAGO" then
+        requiredItems = "Pilgrim @cr "
+    end
+
+    -- Plague
+    if Framework.GetCurrentMapName() == "13_PLAGUE_ARCHIPELAGO" then
+        requiredItems = "Weathertech x 1 @cr "
+    end
+
+    -- Old Kings Castle
+    if Framework.GetCurrentMapName() == "15_OLDKINGSCASTLE_ARCHIPELAGO" then
+        requiredItems = "Pilgrim @cr Helias @cr Ari @cr Weathertech x 1 @cr "
+    end
+
+    -- Cloudy Mountains
+    if Framework.GetCurrentMapName() == "17_CLOUDYMOUNTAINS_ARCHIPELAGO" then
+        requiredItems = "Pilgrim @cr "
+    end
+
+    -- Evelance
+    if Framework.GetCurrentMapName() == "18_EVELANCE_ARCHIPELAGO" then
+        requiredItems = "Pilgrim @cr Literacy x 4 @cr Weathertech x 1 @cr "
+    end
+
+    -- Wasteland
+    if Framework.GetCurrentMapName() == "19_WASTELAND_ARCHIPELAGO" then
+        requiredItems = "Construction x 4 @cr Weathertech x 1 @cr "
+    end
+    return requiredItems
 end

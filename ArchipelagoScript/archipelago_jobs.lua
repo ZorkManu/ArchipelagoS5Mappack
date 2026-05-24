@@ -11,7 +11,6 @@ SAVEFILENAME = "__archipelago-"
 CURRENTFILENAME = "__archipelago-"
 
 function archipelago_init()
-	Script.Load("CSinglePlayer\\ModLoader_SP.lua")
 	Script.Load("maps\\user\\ArchipelagoScript\\archipelago_unit_tribute.lua")
 	Script.Load("maps\\user\\ArchipelagoScript\\archipelago_quest_locations.lua")
 	--Script.Load("maps\\user\\EMS\\tools\\s5CommunityLib\\lib\\MemLib\\MemLib.lua")
@@ -34,7 +33,7 @@ function archipelago_init()
 	forbidAllItemTechs()
 	giveStartingRessources()
 	initBuyableHeroes()
-	initUnitTributes()
+	--initUnitTributes()
 	setPlayerColor()
 	setGameSpeed()
 	--StartSimpleJob("checkMotivation")
@@ -64,51 +63,51 @@ function initBuyableHeroes()
 	end
 	BuyHeroWindow_Update_BuyHero_Backup = BuyHeroWindow_Update_BuyHero
 	function BuyHeroWindow_Update_BuyHero(_HeroEntityType)
-		if(((tonumber(GDB.GetString("progressive_dario")) < 1 or GDB.GetString("progressive_dario") == "") and _HeroEntityType == Entities.PU_Hero1c) or IsDead("Dario") == false) then
+		if(((tonumber(GDB.GetString("progressive_dario")) or 0 < 1 or IsDead("Dario") == false) and _HeroEntityType == Entities.PU_Hero1c)) then
 			XGUIEng.DisableButton( XGUIEng.GetCurrentWidgetID(), 1 )
 			return
 		end
-		if(tonumber(GDB.GetString("pilgrim")) < 1 and _HeroEntityType == Entities.PU_Hero2) then
+		if(tonumber(GDB.GetString("pilgrim")) or 0 < 1 and _HeroEntityType == Entities.PU_Hero2) then
 			XGUIEng.DisableButton( XGUIEng.GetCurrentWidgetID(), 1 )
 			return
 		end
-		if(tonumber(GDB.GetString("salim")) < 1 and _HeroEntityType == Entities.PU_Hero3) then
+		if(tonumber(GDB.GetString("salim")) or 0 < 1 and _HeroEntityType == Entities.PU_Hero3) then
 			XGUIEng.DisableButton( XGUIEng.GetCurrentWidgetID(), 1 )
 			return
 		end
-		if(tonumber(GDB.GetString("erec")) < 1 and _HeroEntityType == Entities.PU_Hero4) then
+		if(tonumber(GDB.GetString("erec")) or 0 < 1 and _HeroEntityType == Entities.PU_Hero4) then
 			XGUIEng.DisableButton( XGUIEng.GetCurrentWidgetID(), 1 )
 			return
 		end
-		if(tonumber(GDB.GetString("ari")) < 1 and _HeroEntityType == Entities.PU_Hero5) then
+		if(tonumber(GDB.GetString("ari")) or 0 < 1 and _HeroEntityType == Entities.PU_Hero5) then
 			XGUIEng.DisableButton( XGUIEng.GetCurrentWidgetID(), 1 )
 			return
 		end
-		if(tonumber(GDB.GetString("helias")) < 1 and _HeroEntityType == Entities.PU_Hero6) then
+		if(tonumber(GDB.GetString("helias")) or 0 < 1 and _HeroEntityType == Entities.PU_Hero6) then
 			XGUIEng.DisableButton( XGUIEng.GetCurrentWidgetID(), 1 )
 			return
 		end
-		if(tonumber(GDB.GetString("kerberos")) < 1 and _HeroEntityType == Entities.CU_BlackKnight) then
+		if(tonumber(GDB.GetString("kerberos")) or 0 < 1 and _HeroEntityType == Entities.CU_BlackKnight) then
 			XGUIEng.DisableButton( XGUIEng.GetCurrentWidgetID(), 1 )
 			return
 		end
-		if(tonumber(GDB.GetString("mary")) < 1 and _HeroEntityType == Entities.CU_Mary_de_Mortfichet) then
+		if(tonumber(GDB.GetString("mary")) or 0 < 1 and _HeroEntityType == Entities.CU_Mary_de_Mortfichet) then
 			XGUIEng.DisableButton( XGUIEng.GetCurrentWidgetID(), 1 )
 			return
 		end
-		if(tonumber(GDB.GetString("varg")) < 1 and _HeroEntityType == Entities.CU_Barbarian_Hero) then
+		if(tonumber(GDB.GetString("varg")) or 0 < 1 and _HeroEntityType == Entities.CU_Barbarian_Hero) then
 			XGUIEng.DisableButton( XGUIEng.GetCurrentWidgetID(), 1 )
 			return
 		end
-		if(tonumber(GDB.GetString("drake")) < 1 and _HeroEntityType == Entities.PU_Hero10) then
+		if(tonumber(GDB.GetString("drake")) or 0 < 1 and _HeroEntityType == Entities.PU_Hero10) then
 			XGUIEng.DisableButton( XGUIEng.GetCurrentWidgetID(), 1 )
 			return
 		end
-		if(tonumber(GDB.GetString("yuki")) < 1 and _HeroEntityType == Entities.PU_Hero11) then
+		if(tonumber(GDB.GetString("yuki")) or 0 < 1 and _HeroEntityType == Entities.PU_Hero11) then
 			XGUIEng.DisableButton( XGUIEng.GetCurrentWidgetID(), 1 )
 			return
 		end
-		if(tonumber(GDB.GetString("kala")) < 1 and _HeroEntityType == Entities.CU_Evil_Queen) then
+		if(tonumber(GDB.GetString("kala")) or 0 < 1 and _HeroEntityType == Entities.CU_Evil_Queen) then
 			XGUIEng.DisableButton( XGUIEng.GetCurrentWidgetID(), 1 )
 			return
 		end
@@ -647,10 +646,8 @@ function enableTechsOutOfGDB()
 		if Logic.IsTechnologyResearched(1, Technologies.T_WeatherForecast) == 0 then
 			AllowTechnology(Technologies.T_WeatherForecast)
 		end
-		if (tonumber(GDB.GetString("progressive_weathertech")) or 0) >= 2 then
-			if Logic.IsTechnologyResearched(1, Technologies.T_ChangeWeather) == 0 then
-				AllowTechnology(Technologies.T_ChangeWeather)
-			end
+		if Logic.IsTechnologyResearched(1, Technologies.T_ChangeWeather) == 0 then
+			AllowTechnology(Technologies.T_ChangeWeather)
 		end
 	end
 end
@@ -785,9 +782,9 @@ function HeroSpawn(pos2)
 		pos2 = ""
 	end
 	if GDB.GetString("starting_hero") == "1" then
-		if(GDB.GetString("progressive_dario") >= "1") then
-			if(GDB.GetString("progressive_dario") >= "2") then
-				if(GDB.GetString("progressive_dario") >= "3") then
+		if(GDB.GetString("progressive_dario") >= "0" or GDB.GetString("progressive_dario") == "") then
+			if(GDB.GetString("progressive_dario") >= "1") then
+				if(GDB.GetString("progressive_dario") >= "2") then
 					CreateMilitaryGroup(1, Entities.PU_Hero1c, 1, GetPosition("HeroSpawn"), "Dario")
 				else
 					CreateMilitaryGroup(1, Entities.PU_Hero1b, 1, GetPosition("HeroSpawn"), "Dario")
@@ -795,9 +792,9 @@ function HeroSpawn(pos2)
 			else
 				CreateMilitaryGroup(1, Entities.PU_Hero1a, 1, GetPosition("HeroSpawn"), "Dario")
 			end
-			CreateChestOpener("Dario")
-			return
 		end
+		CreateChestOpener("Dario")
+		return
 	end
 	if(GDB.GetString("starting_hero") == "2") then
         CreateMilitaryGroup(1, Entities.PU_Hero2, 1, GetPosition("HeroSpawn"), "Pilgrim")
@@ -885,8 +882,10 @@ function getLeadingHero()
 end
 
 function initQuestLog()
-	local archipelagoQuestText = "@color:255,255,0 Archipelago Infos @color:255,255,255 @cr @cr Welcome to S5s Archipelago Version. @cr To use Units that are not yet reachable by recruitement go to tribute. There you can buy the level 1 version of them. @cr To collect location progress the story and absolve side content. @cr @cr Current missing locations in this level: @color:64,224,208 @cr "
+	local archipelagoQuestText = "@color:255,255,0 Archipelago Infos @color:255,255,255 @cr @cr Welcome to S5s Archipelago Version. @cr To collect location progress the story and absolve side content. @cr @cr Current missing locations in this level: @color:64,224,208 @cr "
 	archipelagoQuestText = archipelagoQuestText .. getMissingLocations()
+	archipelagoQuestText = archipelagoQuestText .. "@cr @color:255,255,255 The following technologies/heroes are required for this level: @color:64,224,208 @cr "
+	archipelagoQuestText = archipelagoQuestText .. getRequiredItems()
 	Logic.AddQuest(1, 99, MAINQUEST_OPEN, "Archipelago Infos", archipelagoQuestText, 0)
 end
 
@@ -902,7 +901,7 @@ function reloadGDBItemsSave()
 end
 
 function setPlayerColor()
-	Display.SetPlayerColorMapping(1, tonumber(GDB.GetString("player_color")))
+	Display.SetPlayerColorMapping(1, tonumber(GDB.GetString("player_color")) or 1)
 end
 
 function setGameSpeed()

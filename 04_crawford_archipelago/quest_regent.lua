@@ -64,6 +64,8 @@ TributePaidRegent = function()
 		createBriefingRegentTributePaid()
 	end
 
+	checkLocation("crawford_pay_dovbar")
+
 	return true
 	
 end

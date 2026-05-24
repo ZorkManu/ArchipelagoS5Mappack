@@ -27,7 +27,7 @@ setupArmyAI1Attack = function()
 			Logic.GetEntityIDByName("foundry1"),
 			Logic.GetEntityIDByName("foundry2"),
 		},
-		ArmySize = 5 + diff,
+		ArmySize = 3 + diff,
 		UCats = {
 			{UCat = UpgradeCategories.LeaderSword, SpawnNum = 1, Looped = true},
 			{UCat = UpgradeCategories.LeaderBow, SpawnNum = 1, Looped = true},

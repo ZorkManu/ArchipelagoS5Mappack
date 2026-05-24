@@ -51,5 +51,7 @@ BriefingNPCRiver1 = function()
 	-- give player 500 Taler
 		Tools.GiveResouces(GetHumanPlayer(), 500, 0, 0, 0, 0, 0)
 
+		checkLocation("thalgrund_river_yacht_villager")
+
 	end	
 	

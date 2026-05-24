@@ -15,6 +15,6 @@ destroyQuestLeonardo = function()
 
 	--Logic.SetTechnologyState(GetHumanPlayer(),Technologies.B_Tower, 3 )
 	--Archipelago Reward
-	checkLocation("thalgrund_tower")
+	checkLocation("thalgrund_leonardo")
 
 end

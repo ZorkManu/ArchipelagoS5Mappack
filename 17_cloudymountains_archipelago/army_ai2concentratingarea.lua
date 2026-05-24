@@ -14,7 +14,7 @@ setupArmyAI2 = function()
     })
     SpawnerHQDefend = UnlimitedArmySpawnGenerator:New(armyDefend, {
         Position = GetPosition("AI2_ConcentratingArea"),
-        ArmySize = 3 + diff,
+        ArmySize = 2 + diff,
         SpawnCounter = 30,
         SpawnLeaders = 3,
         LeaderDesc = {
